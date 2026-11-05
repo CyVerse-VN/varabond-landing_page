@@ -490,6 +490,26 @@
       color: var(--txt);
       line-height: 1.55;
     }
+    .ar-right { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+    .ar-right .ar-viewer-card { flex: 1; min-width: 0; }
+    .ar-qr-side { display: none; }
+    .ar-qr-side.show {
+      display: grid; justify-items: center; gap: 10px; text-align: center;
+      padding: 16px; border-radius: 28px;
+      background: var(--glass); color: var(--ink);
+      -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid var(--glass-b); box-shadow: var(--shadow);
+    }
+    .ar-qr-side h2 { font-family: var(--f-display); font-weight: 400; font-size: 20px; line-height: 1.15; color: var(--ink); }
+    .ar-qr-side p { font-size: 12.5px; line-height: 1.5; color: var(--txt); margin: 0; }
+    .ar-qr-side-badge { font: 700 10.5px/1 var(--f-body); letter-spacing: .12em; color: var(--ocean); }
+    html.night .ar-qr-side-badge { color: #7dd3fc; }
+    .ar-qr-side .qr-svg-box { width: 168px; height: 168px; }
+    .ar-qr-side .qr-url-pill { max-width: 100%; }
+    @media (min-width: 1240px) {
+      .ar-right { flex-direction: row; align-items: center; }
+      .ar-qr-side.show { width: 210px; flex: none; }
+    }
     @media (max-width: 960px) {
       .ar-layout { grid-template-columns: 1fr; gap: 28px; }
       model-viewer#varaViewer { height: 440px; }
@@ -572,6 +592,7 @@
       </div>
 
       <!-- Right Column: 3D & AR Canvas Card -->
+      <div class="ar-right">
       <div class="ar-viewer-card">
         <div class="ar-viewer-glow"></div>
 
@@ -634,6 +655,16 @@
         </model-viewer>
 
         <span class="ar-demo-tag" data-i18n="demoBadge">3D & AR DEMO</span>
+      </div>
+
+      <!-- Mã QR hiện ngay cạnh khi mở bằng máy tính -->
+      <aside class="ar-qr-side" id="qrInline" aria-live="polite">
+        <span class="ar-qr-side-badge" data-i18n="qrInlineBadge">📱 DÙNG ĐIỆN THOẠI</span>
+        <h2 data-i18n="qrInlineTitle">Quét mã để thử AR</h2>
+        <div class="qr-svg-box" id="qrInlineSvg"></div>
+        <p data-i18n="qrInlineDesc">Mở camera điện thoại, quét mã này để đặt Vara lên mặt bàn thật.</p>
+        <span class="qr-url-pill" id="qrInlineUrl"></span>
+      </aside>
       </div>
     </section>
 
@@ -738,6 +769,9 @@
       safetyTitle: 'Trải nghiệm an toàn',
       safetyDesc: 'Chỉ dùng AR khi đang đứng yên tại nơi đủ sáng và an toàn; không sử dụng điện thoại khi băng qua đường.',
       qrBtnOpen: 'Mã QR mở trên điện thoại',
+      qrInlineBadge: '📱 DÙNG ĐIỆN THOẠI',
+      qrInlineTitle: 'Quét mã để thử AR',
+      qrInlineDesc: 'Mở camera điện thoại, quét mã này để đặt Vara lên mặt bàn thật.',
       qrModalBadge: 'TRẢI NGHIỆM WEBAR TRÊN DI ĐỘNG',
       qrModalTitle: 'Quét mã QR để đặt Vara vào không gian thật',
       qrModalSubtitle: 'Dùng camera điện thoại (iOS Safari hoặc Android Chrome) quét mã bên dưới để mở trực tiếp phòng thử nghiệm 3D & AR và thử 6 hành động của Vara.',
@@ -781,6 +815,9 @@
       safetyTitle: 'Enjoy safely',
       safetyDesc: 'Use AR only while stationary in a bright, safe place; never use your phone while crossing a street.',
       qrBtnOpen: 'Mobile QR Code',
+      qrInlineBadge: '📱 USE YOUR PHONE',
+      qrInlineTitle: 'Scan to try AR',
+      qrInlineDesc: 'Open your phone camera and scan this code to place Vara on your real table.',
       qrModalBadge: 'MOBILE WEBAR EXPERIENCE',
       qrModalTitle: 'Scan QR to place Vara in your real space',
       qrModalSubtitle: 'Use your phone camera (iOS Safari or Android Chrome) to scan the code below and launch the 3D & AR studio with all 6 Vara gestures.',
@@ -1073,6 +1110,15 @@
       svgBox.innerHTML = window.VarabondQR.renderSvg(url, LANG === 'en' ? 'QR Code for Vara AR Demo' : 'Mã QR mở trang thử nghiệm AR Vara');
     }
     if (urlText) urlText.textContent = url;
+    var inl = document.getElementById('qrInlineSvg');
+    if (inl && window.VarabondQR) {
+      inl.innerHTML = window.VarabondQR.renderSvg(url, LANG === 'en' ? 'QR Code for Vara AR Demo' : 'Mã QR mở trang thử nghiệm AR Vara');
+      var iu = document.getElementById('qrInlineUrl'); if (iu) iu.textContent = url;
+    }
+  }
+  if (platform === 'desktop') {
+    var qrInline = document.getElementById('qrInline');
+    if (qrInline) { qrInline.classList.add('show'); updateQrDisplay(); }
   }
   if (qrDialog && window.VarabondQR) {
     window.VarabondQR.setupDialogLightDismiss(qrDialog);

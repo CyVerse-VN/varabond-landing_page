@@ -1577,6 +1577,15 @@ html.night .qr-pick-lbl{
 .play-badge{text-decoration:none;cursor:pointer;transition:transform .3s var(--spring),background .3s}
 .play-badge:hover{transform:translateY(-2px);background:rgba(255,255,255,.28)}
 
+/* QR modal: định nghĩa các biến màu còn thiếu (nền kính trong suốt, nút trống chữ) */
+:root{--card-solid:#ffffff;--paper:#ffffff;--paper2:#eef7fd;--muted:#4f6f88;--amber:#e7aa59}
+html.night{--card-solid:#0e1830;--paper:#0e1830;--paper2:#16254a;--muted:#a9b8cf;--amber:#fdbd5f}
+dialog.qr-dialog{background:var(--card-solid)}
+.ar-try-btn-main{background:var(--btn);color:#fff}
+.ar-try-btn-main:hover{background:var(--amber);color:#163b65}
+html.night dialog.qr-dialog{border-color:rgba(255,255,255,.35)}
+html.night .qr-close:hover{color:#163b65}
+
 </style>
 </head>
 <body>
@@ -1640,7 +1649,7 @@ html.night .qr-pick-lbl{
     <div class="cta-row rv" style="--d:.75s" id="top-cta">
       <a class="btn light" href="#vara"><span data-i18n="cta_start">Bắt đầu hành trình</span> <span class="arr">→</span></a>
       <a class="btn ghost2" href="/ar-demo/vara" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.35);backdrop-filter:blur(10px)"><span data-i18n="cta_try_ar">Thử AR cùng Vara ✨</span></a>
-      <a class="play-badge" href="https://github.com/trander-25/varabond-download/releases/latest/download/Varabond_Application.apk" download="Varabond_Application.apk" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#37a8b6" d="M3.6 2.2 13.3 12l-9.7 9.8c-.4-.2-.6-.6-.6-1.1V3.3c0-.5.2-.9.6-1.1z"/><path fill="#e7aa59" d="m16.6 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#fff" d="M16.6 15.3 13.3 12l-9.7 9.8c.4.2.9.2 1.4-.1z"/><path fill="#927ddb" d="M16.6 8.7 5 2.3c-.5-.3-1-.3-1.4-.1l9.7 9.8z"/></svg><span><small data-i18n="soon_k">Sắp ra mắt trên</small><b>Android</b></span></a>
+      <a class="play-badge" href="https://github.com/trander-25/varabond-download/releases/latest/download/Varabond_Application.apk" download="Varabond_Application.apk" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#37a8b6" d="M3.6 2.2 13.3 12l-9.7 9.8c-.4-.2-.6-.6-.6-1.1V3.3c0-.5.2-.9.6-1.1z"/><path fill="#e7aa59" d="m16.6 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#fff" d="M16.6 15.3 13.3 12l-9.7 9.8c.4.2.9.2 1.4-.1z"/><path fill="#927ddb" d="M16.6 8.7 5 2.3c-.5-.3-1-.3-1.4-.1l9.7 9.8z"/></svg><span><small data-i18n="soon_k">Android</small><b data-i18n="apk_b">Tải thử APK</b></span></a>
     </div>
   </div>
   <div class="wrap cv-bar">
@@ -2584,7 +2593,7 @@ html.night .qr-pick-lbl{
     nav_tools: 'Features', f1_t: 'Wander', nav_f1_s: 'Map & itinerary', f2_t: 'Discover', nav_f2_s: 'Vara guides you by location', f4_t: 'Passport', nav_f4_s: 'Badges & memories', f3_t: 'Journal', nav_f3_s: 'Chapters & clues', nav_help: 'Support', soon_short: 'Coming soon',
     hero_lead: 'Explore, with AR, a<br><strong>Ho Chi Minh City</strong> you have never seen.',
     hero_desc: 'Travel Ho Chi Minh City with AR and your companion, Vara the bird. You won’t just visit new places — you’ll discover Saigon’s culture through missions and story chapters that unfold by day and by night.',
-    cta_start: 'Start the journey', soon_k: 'Coming soon on', chip1: '📍 Real places', chip2: '🏛 Local culture', chip3: '✨ AR experiences',
+    cta_start: 'Start the journey', soon_k: 'Android', apk_b: 'Try the APK', chip1: '📍 Real places', chip2: '🏛 Local culture', chip3: '✨ AR experiences',
     ar_scan: 'AR · Detecting surface…', tap: 'Tap to hear Vara say hi', scroll: 'Scroll',
     dn_day: 'The city at dawn', c_hcm: 'Ho Chi Minh City', c_bd: 'Binh Duong', c_vt: 'Vung Tau', sym_sun: 'The Sun',
     dn_day_c: 'Saigon by day — the signal to begin a journey of 5 missions.', sym_gate: 'The Gate', gate_c: 'The moment the day and night worlds connect. Give it a tap!',

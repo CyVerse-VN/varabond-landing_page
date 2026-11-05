@@ -18,7 +18,7 @@
     nav_tools: 'Features', f1_t: 'Wander', nav_f1_s: 'Map & itinerary', f2_t: 'Discover', nav_f2_s: 'Vara guides you by location', f4_t: 'Passport', nav_f4_s: 'Badges & memories', f3_t: 'Journal', nav_f3_s: 'Chapters & clues', nav_help: 'Support', soon_short: 'Coming soon',
     hero_lead: 'Explore, with AR, a<br><strong>Ho Chi Minh City</strong> you have never seen.',
     hero_desc: 'Travel Ho Chi Minh City with AR and your companion, Vara the bird. You won’t just visit new places — you’ll discover Saigon’s culture through missions and story chapters that unfold by day and by night.',
-    cta_start: 'Start the journey', soon_k: 'Coming soon on', chip1: '📍 Real places', chip2: '🏛 Local culture', chip3: '✨ AR experiences',
+    cta_start: 'Start the journey', soon_k: 'Android', apk_b: 'Try the APK', chip1: '📍 Real places', chip2: '🏛 Local culture', chip3: '✨ AR experiences',
     ar_scan: 'AR · Detecting surface…', tap: 'Tap to hear Vara say hi', scroll: 'Scroll',
     dn_day: 'The city at dawn', c_hcm: 'Ho Chi Minh City', c_bd: 'Binh Duong', c_vt: 'Vung Tau', sym_sun: 'The Sun',
     dn_day_c: 'Saigon by day — the signal to begin a journey of 5 missions.', sym_gate: 'The Gate', gate_c: 'The moment the day and night worlds connect. Give it a tap!',

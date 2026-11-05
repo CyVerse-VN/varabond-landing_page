@@ -1405,3 +1405,12 @@ html.night .qr-pick-lbl{
 .bd-stage.shot #bdShot{object-fit:contain;object-position:50% 50%}
 .play-badge{text-decoration:none;cursor:pointer;transition:transform .3s var(--spring),background .3s}
 .play-badge:hover{transform:translateY(-2px);background:rgba(255,255,255,.28)}
+
+/* QR modal: định nghĩa các biến màu còn thiếu (nền kính trong suốt, nút trống chữ) */
+:root{--card-solid:#ffffff;--paper:#ffffff;--paper2:#eef7fd;--muted:#4f6f88;--amber:#e7aa59}
+html.night{--card-solid:#0e1830;--paper:#0e1830;--paper2:#16254a;--muted:#a9b8cf;--amber:#fdbd5f}
+dialog.qr-dialog{background:var(--card-solid)}
+.ar-try-btn-main{background:var(--btn);color:#fff}
+.ar-try-btn-main:hover{background:var(--amber);color:#163b65}
+html.night dialog.qr-dialog{border-color:rgba(255,255,255,.35)}
+html.night .qr-close:hover{color:#163b65}
