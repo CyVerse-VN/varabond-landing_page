@@ -395,7 +395,15 @@
         <p class="voice-guide" data-i18n="f2_voice_intro">Nhấn micro, nói một câu hỏi ngắn rồi nhấn dừng. Vara sẽ trả lời bằng chữ và giọng nói khi sẵn sàng.</p>
         <div class="voice-controls"><button class="voice-mic" id="voiceMic" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg><span id="voiceMicLabel" data-i18n="f2_voice_start">Nhấn để nói</span></button><span class="voice-timer" id="voiceTimer">00:00</span></div>
         <p class="voice-hint" id="voiceHint" data-i18n="f2_voice_hint">Micro chỉ được bật sau khi bạn nhấn nút.</p>
-        <div class="voice-response" id="voiceResponse" hidden><span class="demo-lab" data-i18n="f2_voice_reply">Vara trả lời</span><p id="voiceReply" aria-live="polite"></p><audio id="voiceReplyAudio" controls preload="metadata" hidden></audio></div>
+        <div class="voice-response" id="voiceResponse" hidden>
+              <div class="voice-transcript" id="voiceTranscriptWrap" hidden>
+                <span class="demo-lab" data-i18n="f2_voice_you">Bạn đã nói</span>
+                <p id="voiceTranscript"></p>
+              </div>
+              <span class="demo-lab" data-i18n="f2_voice_reply">Vara trả lời</span>
+              <p id="voiceReply" aria-live="polite"></p>
+              <audio id="voiceReplyAudio" controls preload="metadata" hidden></audio>
+            </div>
         <div class="voice-story"><span class="demo-lab" data-i18n="f2_voice_audio">Hoặc nghe Vara giới thiệu</span><audio id="storytellingAudio" controls preload="metadata" src="{{A:audio_storytelling}}"></audio></div>
       </div>
     </div>

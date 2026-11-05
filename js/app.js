@@ -59,7 +59,7 @@
     ui_time: 'Time', ui_budget: 'Budget', ui_like: 'Interests', ui1_h: 'Your itinerary', ui1_m: '3 stops · on foot', pl_po: 'Saigon Central Post Office', pl_book: 'Nguyen Van Binh Book Street', pl_nd: 'Notre-Dame Cathedral (outside)',
     f1_l1: 'Discovery map', f1_l2: 'Flexible itinerary', f1_l3: 'Budget-aware tips', f1_l4: 'Community-picked places',
     f2_n: 'Feature 02', f2_say: '“I can tell where you are! Come closer and I’ll tell you the story of this place.”', f2_c1: '📡 GPS location', f2_c2: '🏛 History & architecture', f2_c3: '💬 Chat with Vara',
-    f2_voice_eyebrow: 'Voice chat with Vara', f2_voice_title: 'Ask Vara about the city', f2_voice_ready: 'Ready to listen', f2_voice_intro: 'Tap the microphone, ask a short question, then tap again to stop. Vara will reply in text and voice when ready.', f2_voice_start: 'Tap to speak', f2_voice_stop: 'Stop recording', f2_voice_hint: 'The microphone turns on only after you tap the button.', f2_voice_recording: 'Recording… tap again when you are done.', f2_voice_connecting: 'Connecting to Vara…', f2_voice_processing: 'Vara is listening and preparing a reply…', f2_voice_reply: 'Vara replies', f2_voice_audio: 'Or hear Vara introduce the place', f2_voice_error: 'Vara is temporarily unavailable. Please try again shortly.', f2_voice_unsupported: 'This browser does not support voice recording.', f2_voice_permission: 'Please allow microphone access to try voice chat.', f2_voice_text_only: 'Vara has replied in text. Audio is not available for this turn.',
+    f2_voice_eyebrow: 'Voice chat with Vara', f2_voice_title: 'Ask Vara about the city', f2_voice_ready: 'Ready to listen', f2_voice_intro: 'Tap the microphone, ask a short question, then tap again to stop. Vara will reply in text and voice when ready.', f2_voice_start: 'Tap to speak', f2_voice_stop: 'Stop recording', f2_voice_hint: 'The microphone turns on only after you tap the button.', f2_voice_recording: 'Recording… tap again when you are done.', f2_voice_connecting: 'Connecting to Vara…', f2_voice_processing: 'Vara is listening and preparing a reply…', f2_voice_you: 'You said', f2_voice_reply: 'Vara replies', f2_voice_audio: 'Or hear Vara introduce the place', f2_voice_error: 'Vara is temporarily unavailable. Please try again shortly.', f2_voice_unsupported: 'This browser does not support voice recording.', f2_voice_permission: 'Please allow microphone access to try voice chat.', f2_voice_short: 'Recording is too short. Please speak for at least 1 second.', f2_voice_text_only: 'Vara has replied in text. Audio is not available for this turn.', f2_st_pending: 'Received question, waiting…', f2_st_transcribing: 'Transcribing your voice…', f2_st_routing: 'Analyzing question…', f2_st_retrieving: 'Searching knowledge & landmarks…', f2_st_generating: 'Composing answer…', f2_st_verifying: 'Verifying facts…', f2_st_synthesizing: 'Synthesizing Vara’s voice…', f2_autoplay_hint: 'Tap play below to listen to Vara’s voice reply.',
     d2_lab: 'Drag to walk to the Post Office', d2_pop: 'Ding! You’ve reached Saigon Central Post Office. Look up above the main entrance — something there is still keeping time!',
     f2_i: 'When you get close to a supported place, Vara recognises your location via GPS and a geofence (an invisible circle around the spot), then introduces its history, architecture and culture, and suggests things worth trying. It’s the core of the free version.',
     ui2_b: 'Looks like you’re near Saigon Central Post Office. Want to hear its story?', ui2_k: 'You are near', ui2_tags: 'History · Architecture', ui2_btn: 'Listen to Vara',
@@ -112,7 +112,7 @@
   /* ===================== dynamic strings ===================== */
   var S = {
     vi: {
-      f2_voice_eyebrow: 'Voice chat cùng Vara', f2_voice_title: 'Hỏi Vara về thành phố', f2_voice_ready: 'Sẵn sàng lắng nghe', f2_voice_intro: 'Nhấn micro, nói một câu hỏi ngắn rồi nhấn dừng. Vara sẽ trả lời bằng chữ và giọng nói khi sẵn sàng.', f2_voice_start: 'Nhấn để nói', f2_voice_stop: 'Dừng ghi âm', f2_voice_hint: 'Micro chỉ được bật sau khi bạn nhấn nút.', f2_voice_recording: 'Đang ghi âm… nhấn lại khi bạn nói xong.', f2_voice_connecting: 'Đang kết nối với Vara…', f2_voice_processing: 'Vara đang lắng nghe và chuẩn bị câu trả lời…', f2_voice_reply: 'Vara trả lời', f2_voice_audio: 'Hoặc nghe Vara giới thiệu', f2_voice_error: 'Vara đang tạm thời chưa phản hồi được. Hãy thử lại sau ít phút.', f2_voice_unsupported: 'Trình duyệt này chưa hỗ trợ ghi âm bằng giọng nói.', f2_voice_permission: 'Hãy cho phép dùng micro để thử trò chuyện bằng giọng nói.', f2_voice_text_only: 'Vara đã trả lời bằng văn bản. Lượt này chưa có audio.',
+      f2_voice_eyebrow: 'Voice chat cùng Vara', f2_voice_title: 'Hỏi Vara về thành phố', f2_voice_ready: 'Sẵn sàng lắng nghe', f2_voice_intro: 'Nhấn micro, nói một câu hỏi ngắn rồi nhấn dừng. Vara sẽ trả lời bằng chữ và giọng nói khi sẵn sàng.', f2_voice_start: 'Nhấn để nói', f2_voice_stop: 'Dừng ghi âm', f2_voice_hint: 'Micro chỉ được bật sau khi bạn nhấn nút.', f2_voice_recording: 'Đang ghi âm… nhấn lại khi bạn nói xong.', f2_voice_connecting: 'Đang kết nối với Vara…', f2_voice_processing: 'Vara đang lắng nghe và chuẩn bị câu trả lời…', f2_voice_you: 'Bạn đã nói', f2_voice_reply: 'Vara trả lời', f2_voice_audio: 'Hoặc nghe Vara giới thiệu', f2_voice_error: 'Vara đang tạm thời chưa phản hồi được. Hãy thử lại sau ít phút.', f2_voice_unsupported: 'Trình duyệt này chưa hỗ trợ ghi âm bằng giọng nói.', f2_voice_permission: 'Hãy cho phép dùng micro để thử trò chuyện bằng giọng nói.', f2_voice_short: 'Bản ghi quá ngắn. Hãy nói ít nhất một giây.', f2_voice_text_only: 'Vara đã trả lời bằng văn bản. Lượt này chưa có audio.', f2_st_pending: 'Đã nhận câu hỏi, đang chờ xử lý…', f2_st_transcribing: 'Đang nhận dạng lời nói…', f2_st_routing: 'Đang phân tích câu hỏi…', f2_st_retrieving: 'Đang tra cứu tri thức…', f2_st_generating: 'Đang soạn câu trả lời…', f2_st_verifying: 'Đang kiểm chứng câu trả lời…', f2_st_synthesizing: 'Đang tạo giọng phản hồi…', f2_autoplay_hint: 'Nhấn phát bên dưới để nghe giọng phản hồi của Vara.',
       title: 'Varabond — Cùng AR khám phá thành phố Hồ Chí Minh',
       ar_found: 'AR · Đã tìm thấy mặt phẳng', ar_spawn: 'AR · Vara đã xuất hiện',
       greet: ['Xin chào! Mình là Vara — hướng dẫn viên kiêm bạn đồng hành của bạn ✨', 'Ban ngày, mình cùng bạn chinh phục 5 nhiệm vụ. Đêm xuống, ta giải mã 3 vụ án nhé!', 'Mỗi nơi bạn đặt chân đến sẽ để lại một huy hiệu trong Hộ chiếu đó. Đi thôi nào!'],
@@ -438,91 +438,415 @@
     setTimeout(function () { lastPlan = PLANS[planSel.time][planSel.like]; renderPlan(true); btn.disabled = false; var r = btn.getBoundingClientRect(), pr = $('#demoPlan').getBoundingClientRect(); sparkle($('#demoPlan'), r.left - pr.left + r.width / 2, r.top - pr.top + r.height / 2, 10); }, reduce ? 0 : 700);
   });
 
-  /* ===================== DEMO 2: VOICE CHAT ===================== */
+  /* ===================== DEMO 2: VOICE CHAT (Synced with saigon-veilwake-ai-assistant) ===================== */
   (function () {
     var root = $('#demoVoice'), mic = $('#voiceMic');
     if (!root || !mic) return;
-    var API = 'https://saigon-veilwake-ai-assistant.onrender.com', sessionId = null, recorder = null, stream = null, chunks = [], busy = false, timer = null, stopTimer = null, audioUrl = null;
-    var status = $('#voiceStatus'), label = $('#voiceMicLabel'), hint = $('#voiceHint'), timerEl = $('#voiceTimer'), response = $('#voiceResponse'), reply = $('#voiceReply'), replyAudio = $('#voiceReplyAudio');
+    var API = 'https://saigon-veilwake-ai-assistant.onrender.com';
+    var DEFAULT_LOCATION_ID = 'post_office';
+    var TERMINAL = { COMPLETED: 1, COMPLETED_TEXT_ONLY: 1, FAILED: 1 };
+    var STAGE_KEYS = {
+      PENDING: 'f2_st_pending',
+      TRANSCRIBING: 'f2_st_transcribing',
+      ROUTING: 'f2_st_routing',
+      RETRIEVING: 'f2_st_retrieving',
+      GENERATING: 'f2_st_generating',
+      VERIFYING: 'f2_st_verifying',
+      SYNTHESIZING: 'f2_st_synthesizing'
+    };
+    var WORKLET_CODE = [
+      'class PcmRecorder extends AudioWorkletProcessor {',
+      '  constructor() {',
+      '    super(); this.buffer = new Float32Array(2048); this.offset = 0; this.active = true;',
+      '    this.port.onmessage = ({data}) => {',
+      '      if (data === "stop") { this.flush(); this.active = false; this.port.postMessage({done: true}); }',
+      '    };',
+      '  }',
+      '  flush() {',
+      '    if (!this.offset) return;',
+      '    const samples = this.buffer.slice(0, this.offset);',
+      '    let sum = 0; for (const v of samples) sum += v * v;',
+      '    this.port.postMessage({samples, rms: Math.sqrt(sum / samples.length)}, [samples.buffer]);',
+      '    this.offset = 0;',
+      '  }',
+      '  process(inputs) {',
+      '    if (!this.active) return false;',
+      '    const chs = inputs[0]; if (!chs || !chs.length) return true;',
+      '    for (let i = 0; i < chs[0].length; i++) {',
+      '      let mono = 0; for (const c of chs) mono += c[i] / chs.length;',
+      '      this.buffer[this.offset++] = mono;',
+      '      if (this.offset === this.buffer.length) this.flush();',
+      '    }',
+      '    return true;',
+      '  }',
+      '}',
+      'registerProcessor("pcm-recorder", PcmRecorder);'
+    ].join('\n');
+
+    var conversation = null, connectPromise = null, activeRecorder = null, busy = false;
+    var timer = null, stopTimer = null, audioUrl = null, generation = 0, audioGeneration = 0;
+    var parentAbort = new AbortController();
+    var status = $('#voiceStatus'), label = $('#voiceMicLabel'), hint = $('#voiceHint'), timerEl = $('#voiceTimer');
+    var response = $('#voiceResponse'), transcriptWrap = $('#voiceTranscriptWrap'), transcriptEl = $('#voiceTranscript');
+    var reply = $('#voiceReply'), replyAudio = $('#voiceReplyAudio');
+
     function text(key) { return L()[key] || ''; }
-    function apiUrl(path) { return /^https?:\/\//.test(path) ? path : API + path; }
+    function uuid() {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    }
+    function apiUrl(path) {
+      var normalized = path.indexOf('/dev/v1/') === 0 ? path.slice(4) : path;
+      return /^https?:\/\//.test(normalized) ? normalized : API + normalized;
+    }
     function wait(ms) { return new Promise(function (resolve) { setTimeout(resolve, ms); }); }
     function clock(seconds) { return '00:' + String(Math.min(30, seconds)).padStart(2, '0'); }
     function stopClock() { clearInterval(timer); clearTimeout(stopTimer); timer = null; stopTimer = null; timerEl.textContent = '00:00'; }
     function view(mode, statusKey, hintKey) {
-      root.classList.toggle('recording', mode === 'recording'); root.classList.toggle('busy', mode === 'busy');
-      mic.disabled = mode === 'busy'; mic.setAttribute('aria-pressed', mode === 'recording' ? 'true' : 'false');
+      root.classList.toggle('recording', mode === 'recording');
+      root.classList.toggle('busy', mode === 'busy');
+      mic.disabled = mode === 'busy';
+      mic.setAttribute('aria-pressed', mode === 'recording' ? 'true' : 'false');
       label.textContent = mode === 'recording' ? text('f2_voice_stop') : text('f2_voice_start');
-      status.textContent = text(statusKey); hint.textContent = text(hintKey || statusKey);
+      status.textContent = text(statusKey);
+      hint.textContent = text(hintKey || statusKey);
     }
-    async function request(path, options) {
-      var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 70000);
-      try {
-        var res = await fetch(apiUrl(path), Object.assign({ cache: 'no-store', signal: controller.signal }, options || {}));
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res;
-      } finally { clearTimeout(timeout); }
-    }
-    function releaseStream() { if (stream) stream.getTracks().forEach(function (track) { track.stop(); }); stream = null; }
-    function resetReplyAudio() { replyAudio.pause(); replyAudio.removeAttribute('src'); replyAudio.hidden = true; if (audioUrl) URL.revokeObjectURL(audioUrl); audioUrl = null; }
-    async function connect() {
-      if (sessionId) return;
-      var session = await (await request('/v1/conversations', { method: 'POST' })).json();
-      if (!session.conversation_id) throw new Error('Missing conversation ID');
-      sessionId = session.conversation_id;
-    }
-    async function poll(turnId) {
-      for (var i = 0; i < 75; i++) {
-        if (i) await wait(1200);
-        var turn = await (await request('/v1/turns/' + encodeURIComponent(turnId))).json();
-        if (turn.status === 'FAILED') throw new Error('Turn failed');
-        if (turn.status === 'COMPLETED' || turn.status === 'COMPLETED_TEXT_ONLY') return turn;
-      }
-      throw new Error('Turn timed out');
-    }
-    async function playReply(turn) {
-      if (!turn.audio || turn.audio.status !== 'READY' || !turn.audio.endpoint) return false;
-      var blob = await (await request(turn.audio.endpoint)).blob();
-      audioUrl = URL.createObjectURL(blob); replyAudio.src = audioUrl; replyAudio.hidden = false;
-      replyAudio.play().catch(function () { });
-      return true;
-    }
-    async function sendRecording(blob) {
-      try {
-        var data = new FormData();
-        data.append('audio', blob, 'vara-question.webm'); data.append('response_mode', 'text_and_voice'); data.append('locale', 'vi-VN');
-        var accepted = await (await request('/v1/conversations/' + encodeURIComponent(sessionId) + '/voice-turns', { method: 'POST', body: data })).json();
-        var turn = await poll(accepted.turn_id);
-        response.hidden = false; reply.textContent = turn.answer && turn.answer.text ? turn.answer.text : text('f2_voice_error');
-        var hasAudio = await playReply(turn); view('ready', 'f2_voice_ready', hasAudio ? 'f2_voice_hint' : 'f2_voice_text_only');
-      } catch (error) {
-        console.warn('Voice chat request failed.', error); view('ready', 'f2_voice_error', 'f2_voice_error');
-      } finally { busy = false; }
-    }
-    function stopRecording() {
-      if (!recorder || recorder.state === 'inactive') return;
-      busy = true; stopClock(); view('busy', 'f2_voice_processing', 'f2_voice_processing'); recorder.stop();
-    }
-    async function startRecording() {
-      if (busy || recorder) return;
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { view('ready', 'f2_voice_unsupported', 'f2_voice_unsupported'); return; }
-      busy = true; resetReplyAudio(); response.hidden = true; view('busy', 'f2_voice_connecting', 'f2_voice_connecting');
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({ audio: true }); await connect();
-        var type = MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : '';
-        recorder = type ? new MediaRecorder(stream, { mimeType: type }) : new MediaRecorder(stream); chunks = [];
-        recorder.addEventListener('dataavailable', function (event) { if (event.data && event.data.size) chunks.push(event.data); });
-        recorder.addEventListener('stop', function () { var finished = recorder; recorder = null; releaseStream(); var blob = new Blob(chunks, { type: finished.mimeType || 'audio/webm' }); if (!blob.size) { busy = false; view('ready', 'f2_voice_error', 'f2_voice_error'); return; } sendRecording(blob); });
-        recorder.start(); busy = false; view('recording', 'f2_voice_recording', 'f2_voice_recording');
-        var started = Date.now(); timer = setInterval(function () { timerEl.textContent = clock(Math.floor((Date.now() - started) / 1000)); }, 200); stopTimer = setTimeout(stopRecording, 30000);
-      } catch (error) {
-        console.warn('Voice recording could not start.', error); releaseStream(); busy = false; view('ready', 'f2_voice_permission', 'f2_voice_permission');
-      }
-    }
-    mic.addEventListener('click', function () { if (recorder) stopRecording(); else startRecording(); });
-    window.addEventListener('pagehide', function () { stopClock(); if (recorder && recorder.state !== 'inactive') recorder.stop(); releaseStream(); if (audioUrl) URL.revokeObjectURL(audioUrl); });
-  })();
 
+    function resampleMono(input, fromRate, toRate) {
+      toRate = toRate || 16000;
+      if (fromRate === toRate) return input;
+      var ratio = fromRate / toRate;
+      var output = new Float32Array(Math.floor(input.length / ratio));
+      for (var i = 0; i < output.length; i++) {
+        if (ratio < 1) {
+          var pos = i * ratio, left = Math.floor(pos);
+          output[i] = input[left] + (input[Math.min(left + 1, input.length - 1)] - input[left]) * (pos - left);
+        } else {
+          var start = i * ratio, end = (i + 1) * ratio, sum = 0;
+          for (var j = Math.floor(start); j < Math.ceil(end); j++) {
+            sum += input[j] * (Math.min(end, j + 1) - Math.max(start, j));
+          }
+          output[i] = sum / ratio;
+        }
+      }
+      return output;
+    }
+
+    function encodeWav(samples, sampleRate) {
+      sampleRate = sampleRate || 16000;
+      var bytes = new ArrayBuffer(44 + samples.length * 2), dv = new DataView(bytes);
+      function writeStr(at, s) { for (var i = 0; i < s.length; i++) dv.setUint8(at + i, s.charCodeAt(i)); }
+      writeStr(0, 'RIFF'); dv.setUint32(4, bytes.byteLength - 8, true); writeStr(8, 'WAVE');
+      writeStr(12, 'fmt '); dv.setUint32(16, 16, true); dv.setUint16(20, 1, true);
+      dv.setUint16(22, 1, true); dv.setUint32(24, sampleRate, true);
+      dv.setUint32(28, sampleRate * 2, true); dv.setUint16(32, 2, true); dv.setUint16(34, 16, true);
+      writeStr(36, 'data'); dv.setUint32(40, samples.length * 2, true);
+      for (var i = 0; i < samples.length; i++) {
+        var val = Math.max(-1, Math.min(1, samples[i]));
+        dv.setInt16(44 + i * 2, Math.round(val * (val < 0 ? 32768 : 32767)), true);
+      }
+      return new Blob([bytes], { type: 'audio/wav' });
+    }
+
+    function createPcmRecorder() {
+      var stream = null, context = null, node = null, source = null, workletUrl = null;
+      var chunks = [], totalLength = 0, finishResolve = null;
+      async function dispose() {
+        if (workletUrl) { URL.revokeObjectURL(workletUrl); workletUrl = null; }
+        if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+        if (source) { try { source.disconnect(); } catch (e) { } source = null; }
+        if (node) { try { node.disconnect(); } catch (e) { } node = null; }
+        if (context && context.state !== 'closed') { try { await context.close(); } catch (e) { } }
+        context = null;
+      }
+      return {
+        start: async function () {
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true }
+          });
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if (AC && window.AudioWorkletNode) {
+            try {
+              context = new AC();
+              await context.resume();
+              workletUrl = URL.createObjectURL(new Blob([WORKLET_CODE], { type: 'application/javascript' }));
+              await context.audioWorklet.addModule(workletUrl);
+              node = new AudioWorkletNode(context, 'pcm-recorder');
+              node.port.onmessage = function (ev) {
+                var data = ev.data;
+                if (data.samples) {
+                  var rem = Math.max(0, Math.floor(context.sampleRate * 30) - totalLength);
+                  var chunk = data.samples.subarray(0, rem);
+                  chunks.push(chunk); totalLength += chunk.length;
+                }
+                if (data.done && finishResolve) finishResolve();
+              };
+              source = context.createMediaStreamSource(stream);
+              source.connect(node); node.connect(context.destination);
+              return;
+            } catch (workletErr) {
+              if (workletUrl) { URL.revokeObjectURL(workletUrl); workletUrl = null; }
+              if (context && context.state !== 'closed') { try { await context.close(); } catch (e) { } }
+              context = null;
+            }
+          }
+          // Fallback to MediaRecorder if AudioWorklet is unavailable
+          if (!window.MediaRecorder) { await dispose(); throw new Error('UNSUPPORTED'); }
+          var mime = MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : '';
+          var mr = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream);
+          var mrChunks = [], startedAt = Date.now();
+          mr.addEventListener('dataavailable', function (e) { if (e.data && e.data.size) mrChunks.push(e.data); });
+          mr.start();
+          this._mr = mr; this._mrChunks = mrChunks; this._startedAt = startedAt;
+        },
+        stop: async function () {
+          try {
+            if (this._mr) {
+              var mr = this._mr, mrChunks = this._mrChunks, dur = (Date.now() - this._startedAt) / 1000;
+              if (mr.state !== 'inactive') {
+                await new Promise(function (res) { mr.addEventListener('stop', res, { once: true }); mr.stop(); });
+              }
+              if (dur < 1) { var shortErr = new Error('SHORT'); shortErr.code = 'SHORT'; throw shortErr; }
+              var blob = new Blob(mrChunks, { type: mr.mimeType || 'audio/webm' });
+              return { blob: blob, filename: 'vara-question.webm' };
+            }
+            if (!node || !context) throw new Error('NOT_READY');
+            var sr = context.sampleRate;
+            await new Promise(function (resolve) {
+              var t = setTimeout(resolve, 1000);
+              finishResolve = function () { clearTimeout(t); resolve(); };
+              node.port.postMessage('stop');
+            });
+            if (totalLength / sr < 1) {
+              var err = new Error('SHORT'); err.code = 'SHORT'; throw err;
+            }
+            var samples = new Float32Array(totalLength), offset = 0;
+            for (var i = 0; i < chunks.length; i++) { samples.set(chunks[i], offset); offset += chunks[i].length; }
+            return { blob: encodeWav(resampleMono(samples, sr, 16000), 16000), filename: 'recording.wav' };
+          } finally {
+            await dispose();
+          }
+        },
+        dispose: dispose
+      };
+    }
+
+    async function request(path, options, timeoutMs) {
+      var reqAbort = new AbortController();
+      var onParentAbort = function () { reqAbort.abort(); };
+      parentAbort.signal.addEventListener('abort', onParentAbort, { once: true });
+      var timeout = setTimeout(function () { reqAbort.abort(); }, timeoutMs || 60000);
+      try {
+        var res = await fetch(apiUrl(path), Object.assign({ cache: 'no-store', signal: reqAbort.signal }, options || {}));
+        if (!res.ok) {
+          var payload = await res.json().catch(function () { return null; });
+          var msg = (payload && payload.error && payload.error.message) || (payload && payload.detail) || ('HTTP ' + res.status);
+          var err = new Error(msg); err.status = res.status; throw err;
+        }
+        return res;
+      } finally {
+        clearTimeout(timeout);
+        parentAbort.signal.removeEventListener('abort', onParentAbort);
+      }
+    }
+
+    function resetReplyAudio() {
+      audioGeneration++;
+      replyAudio.pause(); replyAudio.removeAttribute('src'); replyAudio.load(); replyAudio.hidden = true;
+      if (audioUrl) { URL.revokeObjectURL(audioUrl); audioUrl = null; }
+    }
+
+    async function ensureConversation(forceNew) {
+      if (forceNew) { conversation = null; connectPromise = null; }
+      if (conversation && conversation.conversation_id) return conversation;
+      if (!connectPromise) {
+        connectPromise = (async function () {
+          try {
+            var session = await (await request('/v1/conversations', { method: 'POST' }, 30000)).json();
+            if (!session || !session.conversation_id) throw new Error('Missing conversation_id');
+            conversation = session;
+            return session;
+          } finally {
+            connectPromise = null;
+          }
+        })();
+      }
+      return connectPromise;
+    }
+
+    function renderTurnProgress(turn) {
+      var stKey = STAGE_KEYS[turn.status] || 'f2_voice_processing';
+      status.textContent = text(stKey);
+      hint.textContent = (turn.error && turn.error.message) ? turn.error.message : text(stKey);
+      if (turn.input && turn.input.transcript) {
+        response.hidden = false;
+        if (transcriptWrap && transcriptEl) {
+          transcriptWrap.hidden = false;
+          transcriptEl.textContent = '“' + turn.input.transcript + '”';
+        }
+      }
+      if (turn.answer && turn.answer.text) {
+        response.hidden = false;
+        reply.textContent = turn.answer.text;
+      }
+    }
+
+    async function playReply(turn, curGen) {
+      if (!turn.audio || turn.audio.status !== 'READY' || !turn.audio.endpoint) return false;
+      var curAudio = ++audioGeneration;
+      try {
+        var blob = await (await request(turn.audio.endpoint, {}, 45000)).blob();
+        if (curGen !== generation || curAudio !== audioGeneration) return false;
+        if (audioUrl) URL.revokeObjectURL(audioUrl);
+        audioUrl = URL.createObjectURL(blob);
+        replyAudio.src = audioUrl;
+        replyAudio.hidden = false;
+        await replyAudio.play().catch(function () {
+          hint.textContent = text('f2_autoplay_hint');
+        });
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    async function pollTurn(turnId, curGen) {
+      var timeoutSec = (conversation && conversation.turn_timeout_seconds) || 120;
+      var intervalMs = (conversation && conversation.poll_interval_ms) || 1000;
+      var deadline = Date.now() + (timeoutSec + 15) * 1000;
+      while (curGen === generation) {
+        if (Date.now() > deadline) throw new Error('Turn timed out');
+        var turn = await (await request('/v1/turns/' + encodeURIComponent(turnId), {}, 30000)).json();
+        if (curGen !== generation) return null;
+        renderTurnProgress(turn);
+        if (TERMINAL[turn.status]) {
+          if (turn.status === 'FAILED') throw new Error((turn.error && turn.error.message) || 'Turn failed');
+          return turn;
+        }
+        await wait(intervalMs);
+      }
+      return null;
+    }
+
+    async function submitVoiceTurn(recResult, curGen) {
+      var idemKey = uuid();
+      function buildForm() {
+        var fd = new FormData();
+        fd.append('audio', recResult.blob, recResult.filename || 'recording.wav');
+        fd.append('response_mode', 'text_and_voice');
+        fd.append('locale', 'vi-VN');
+        fd.append('story_access_level', '0');
+        fd.append('location_id', DEFAULT_LOCATION_ID);
+        return fd;
+      }
+      var session = await ensureConversation(false);
+      var accepted;
+      try {
+        accepted = await (await request(
+          '/v1/conversations/' + encodeURIComponent(session.conversation_id) + '/voice-turns',
+          { method: 'POST', headers: { 'Idempotency-Key': idemKey }, body: buildForm() },
+          60000
+        )).json();
+      } catch (err) {
+        // Recreate in-memory session if server restarted/redeployed (404)
+        if (err && err.status === 404) {
+          session = await ensureConversation(true);
+          accepted = await (await request(
+            '/v1/conversations/' + encodeURIComponent(session.conversation_id) + '/voice-turns',
+            { method: 'POST', headers: { 'Idempotency-Key': uuid() }, body: buildForm() },
+            60000
+          )).json();
+        } else {
+          throw err;
+        }
+      }
+      if (curGen !== generation) return;
+      var turn = await pollTurn(accepted.turn_id, curGen);
+      if (!turn || curGen !== generation) return;
+      response.hidden = false;
+      reply.textContent = (turn.answer && turn.answer.text) ? turn.answer.text : text('f2_voice_error');
+      var hasAudio = await playReply(turn, curGen);
+      if (curGen === generation) {
+        view('ready', 'f2_voice_ready', hasAudio ? 'f2_voice_hint' : 'f2_voice_text_only');
+      }
+    }
+
+    async function stopRecording() {
+      if (!activeRecorder || busy) return;
+      var curGen = generation;
+      busy = true;
+      stopClock();
+      var rec = activeRecorder;
+      activeRecorder = null;
+      view('busy', 'f2_voice_processing', 'f2_voice_processing');
+      try {
+        var recResult = await rec.stop();
+        if (curGen !== generation) return;
+        await submitVoiceTurn(recResult, curGen);
+      } catch (error) {
+        if (curGen !== generation) return;
+        if (error && error.code === 'SHORT') {
+          view('ready', 'f2_voice_ready', 'f2_voice_short');
+        } else {
+          console.warn('Voice chat request failed.', error);
+          view('ready', 'f2_voice_error', 'f2_voice_error');
+        }
+      } finally {
+        if (curGen === generation) busy = false;
+      }
+    }
+
+    async function startRecording() {
+      if (busy || activeRecorder) return;
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        view('ready', 'f2_voice_unsupported', 'f2_voice_unsupported');
+        return;
+      }
+      var curGen = ++generation;
+      busy = true;
+      resetReplyAudio();
+      response.hidden = true;
+      if (transcriptWrap && transcriptEl) { transcriptWrap.hidden = true; transcriptEl.textContent = ''; }
+      reply.textContent = '';
+      view('busy', 'f2_voice_connecting', 'f2_voice_connecting');
+      var rec = createPcmRecorder();
+      try {
+        // Warm up conversation session in parallel with mic acquisition
+        ensureConversation(false).catch(function () { });
+        await rec.start();
+        if (curGen !== generation) { await rec.dispose(); return; }
+        activeRecorder = rec;
+        busy = false;
+        view('recording', 'f2_voice_recording', 'f2_voice_recording');
+        var started = Date.now();
+        timer = setInterval(function () {
+          timerEl.textContent = clock(Math.floor((Date.now() - started) / 1000));
+        }, 200);
+        stopTimer = setTimeout(stopRecording, 30000);
+      } catch (error) {
+        await rec.dispose();
+        if (curGen !== generation) return;
+        busy = false;
+        var key = (error && error.message === 'UNSUPPORTED') ? 'f2_voice_unsupported' : 'f2_voice_permission';
+        console.warn('Voice recording could not start.', error);
+        view('ready', key, key);
+      }
+    }
+
+    mic.addEventListener('click', function () {
+      if (activeRecorder) stopRecording(); else startRecording();
+    });
+    window.addEventListener('pagehide', function () {
+      generation++;
+      parentAbort.abort();
+      parentAbort = new AbortController();
+      stopClock();
+      if (activeRecorder) { activeRecorder.dispose(); activeRecorder = null; }
+      resetReplyAudio();
+    });
+  })();
   /* ===================== DEMO 3: JOURNAL ===================== */
   var jp = 0;
   function renderJournal() {
