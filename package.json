@@ -1,0 +1,11 @@
+{
+  "name": "varabond-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Varabond — Cùng AR khám phá thành phố Hồ Chí Minh",
+  "scripts": {
+    "dev": "node code/dev.js",
+    "start": "node code/dev.js"
+  }
+}
+

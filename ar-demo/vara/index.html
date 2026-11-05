@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Varabond — Trải nghiệm 3D & AR cùng Vara</title>
+  <meta name="description" content="Xoay ngắm linh vật Vara ở dạng 3D, thử 6 hành động tương tác và bật Camera AR đặt Vara vào không gian thật của bạn.">
+  <meta name="theme-color" content="#f7fbff">
+  <script>try{if(localStorage.getItem('vb_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>
+  <link rel="icon" href="/assets/app_icon.webp" type="image/webp">
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <style>
+    .ar-page {
+      min-height: 100vh;
+      padding: 28px 0 64px;
+      position: relative;
+      z-index: 2;
+    }
+    .ar-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .ar-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font: 700 14px/1 var(--f-body);
+      color: var(--ink);
+      background: var(--glass);
+      border: 1.5px solid var(--line);
+      text-decoration: none;
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 26px -16px rgba(22,59,101,.35);
+      transition: transform .3s var(--spring), background .3s;
+    }
+    .ar-back:hover {
+      transform: translateY(-2px);
+      background: var(--card);
+    }
+    .ar-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ar-qr-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font: 700 13px/1 var(--f-body);
+      color: var(--ink);
+      background: var(--cream);
+      border: 1.5px solid var(--sand);
+      transition: transform .3s var(--spring), box-shadow .3s;
+    }
+    .ar-qr-trigger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -14px rgba(231,170,89,.6);
+    }
+    .ar-qr-trigger svg {
+      width: 16px;
+      height: 16px;
+      color: var(--ocean);
+    }
+    html.night .ar-qr-trigger svg {
+      color: var(--logo-a);
+    }
+    .ar-layout {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .ar-info-col {
+      display: grid;
+      gap: 20px;
+    }
+    .ar-badge-pill {
+      justify-self: start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font: 700 11.5px/1 var(--f-body);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: var(--cream);
+      color: #8a5614;
+      border: 1.5px solid var(--sand);
+    }
+    html.night .ar-badge-pill {
+      color: #fde68a;
+      border-color: rgba(231,170,89,.4);
+    }
+    .ar-title {
+      font-family: var(--f-display);
+      font-weight: 400;
+      font-size: clamp(38px, 4.6vw, 62px);
+      line-height: 1.04;
+      color: var(--ink);
+    }
+    .ar-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--txt);
+    }
+    .ar-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      border: 1.5px solid var(--line);
+      background: var(--glass);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+    .ar-banner svg {
+      width: 20px;
+      height: 20px;
+      flex: none;
+      margin-top: 2px;
+    }
+    .ar-banner.warning {
+      background: rgba(245, 158, 11, 0.14);
+      border-color: rgba(245, 158, 11, 0.5);
+      color: var(--ink);
+    }
+    .ar-banner.warning svg { color: #d97706; }
+    html.night .ar-banner.warning svg { color: #fbbf24; }
+    .ar-banner.success {
+      background: rgba(55, 168, 182, 0.15);
+      border-color: rgba(55, 168, 182, 0.5);
+      color: var(--ink);
+    }
+    .ar-banner.success svg { color: var(--teal); }
+    .ar-banner.info svg, .ar-banner.neutral svg { color: var(--ocean); }
+    html.night .ar-banner.info svg, html.night .ar-banner.neutral svg { color: #38bdf8; }
+
+    .ar-launch-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 24px;
+      border-radius: 20px;
+      font: 700 16px/1.2 var(--f-body);
+      color: #fff;
+      background: linear-gradient(110deg, var(--ocean), var(--teal), var(--deep));
+      background-size: 200% auto;
+      box-shadow: 0 18px 36px -14px rgba(20,101,142,.65);
+      transition: transform .3s var(--spring), background-position .5s, box-shadow .3s, opacity .3s;
+    }
+    .ar-launch-btn:hover:not(:disabled) {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px -12px rgba(20,101,142,.8);
+    }
+    .ar-launch-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      background: #64748b;
+      box-shadow: none;
+    }
+    .ar-launch-btn svg {
+      width: 22px;
+      height: 22px;
+      flex: none;
+    }
+    .ar-ready-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #6ee7b7;
+      box-shadow: 0 0 10px #6ee7b7;
+      animation: blink 1s infinite;
+      display: none;
+    }
+    .ar-ready-dot.on { display: inline-block; }
+
+    .ar-controls-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ar-controls-title {
+      font: 700 12px/1 var(--f-body);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ocean);
+    }
+    html.night .ar-controls-title { color: #7dd3fc; }
+    .ar-next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font: 700 12.5px/1 var(--f-body);
+      color: var(--ocean);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--sky50);
+      border: 1px solid var(--line);
+      transition: transform .25s var(--spring);
+    }
+    html.night .ar-next-btn { color: #7dd3fc; }
+    .ar-next-btn:hover { transform: scale(1.04); }
+    .ar-next-btn svg { width: 13px; height: 13px; }
+
+    .ar-clips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .ar-clip-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 13px;
+      border-radius: 16px;
+      font: 700 13px/1.2 var(--f-body);
+      color: var(--ink);
+      background: var(--glass);
+      border: 1.5px solid var(--line);
+      text-align: left;
+      transition: transform .25s var(--spring), background .25s, border-color .25s, color .25s, box-shadow .25s;
+    }
+    .ar-clip-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--ocean);
+      background: var(--card);
+    }
+    .ar-clip-btn[aria-pressed="true"] {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+      box-shadow: 0 12px 24px -12px rgba(22,59,101,.7);
+      transform: scale(1.02);
+    }
+    html.night .ar-clip-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, #0284c7, #0d9488);
+      border-color: #38bdf8;
+    }
+    .ar-clip-btn .ic { font-size: 16px; flex: none; }
+    .ar-clip-btn .lb { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Right column: 3D Viewer Card */
+    .ar-viewer-card {
+      position: relative;
+      border-radius: 38px;
+      padding: 18px;
+      background: var(--glass);
+      border: 1.5px solid var(--glass-b);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .ar-viewer-glow {
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 32px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(125, 211, 252, 0.38);
+      filter: blur(48px);
+      pointer-events: none;
+    }
+    html.night .ar-viewer-glow {
+      background: rgba(146, 125, 219, 0.25);
+    }
+    model-viewer#varaViewer {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 540px;
+      border-radius: 26px;
+      background: radial-gradient(circle at 50% 35%, rgba(255,255,255,.45), rgba(204,232,245,.2));
+      --poster-color: transparent;
+    }
+    html.night model-viewer#varaViewer {
+      background: radial-gradient(circle at 50% 35%, rgba(36,59,109,.45), rgba(6,11,24,.35));
+    }
+    .ar-overlay-box {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 24px;
+      text-align: center;
+      background: rgba(247, 251, 255, 0.65);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      transition: opacity .35s;
+    }
+    html.night .ar-overlay-box {
+      background: rgba(6, 11, 24, 0.65);
+    }
+    .ar-overlay-box.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .ar-load-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      font: 700 14px/1 var(--f-body);
+      color: var(--ink);
+      box-shadow: 0 10px 24px -14px rgba(22,59,101,.4);
+    }
+    .ar-load-pill .ping-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: ping 1.4s infinite;
+    }
+    .ar-prog-track {
+      width: 200px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--sky200);
+      overflow: hidden;
+    }
+    .ar-prog-bar {
+      height: 100%;
+      width: 12%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal), var(--ocean));
+      transition: width .3s;
+    }
+    .ar-slot-btn {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--ocean);
+      color: #fff;
+      font: 700 14px/1 var(--f-body);
+      box-shadow: 0 14px 28px -10px rgba(20,101,142,.7);
+    }
+    /* WebXR In-AR Live Camera Overlay */
+    .ar-webxr-hud {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 20px;
+      z-index: 20;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }
+    .ar-webxr-hud.active {
+      display: flex;
+    }
+    .ar-webxr-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(6, 11, 24, 0.86);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: 12px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .ar-webxr-top b { color: #ffd444; }
+    .ar-webxr-top button {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--ocean);
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .ar-webxr-strip {
+      display: flex;
+      max-width: 100%;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 6px 10px;
+      border-radius: 18px;
+      background: rgba(6, 11, 24, 0.78);
+      border: 1px solid rgba(255,255,255,.25);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .ar-webxr-chip {
+      flex: none;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font: 700 12px/1 var(--f-body);
+      color: #fff;
+      background: rgba(255,255,255,.18);
+      transition: .2s;
+    }
+    .ar-webxr-chip.on {
+      background: linear-gradient(90deg, var(--ocean), var(--teal));
+      transform: scale(1.05);
+    }
+    .ar-demo-tag {
+      position: absolute;
+      right: 26px;
+      bottom: 24px;
+      z-index: 3;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(6, 11, 24, 0.6);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      font: 700 10px/1 var(--f-body);
+      letter-spacing: .16em;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .ar-cards-bottom {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .ar-subcard {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 22px 24px;
+      border-radius: 26px;
+      background: var(--glass);
+      border: 1.5px solid var(--line);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+    .ar-subcard .ic-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      background: var(--sky100);
+      color: var(--ocean);
+    }
+    .ar-subcard h2 {
+      font-family: var(--f-display);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .ar-subcard p {
+      font-size: 14px;
+      color: var(--txt);
+      line-height: 1.55;
+    }
+    @media (max-width: 960px) {
+      .ar-layout { grid-template-columns: 1fr; gap: 28px; }
+      model-viewer#varaViewer { height: 440px; }
+      .ar-cards-bottom { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .ar-clips-grid { grid-template-columns: 1fr 1fr; }
+      model-viewer#varaViewer { height: 390px; }
+    }
+  </style>
+</head>
+<body>
+<div class="bgfx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<span class="veilfx" id="veilfx"></span>
+
+<main class="ar-page">
+  <div class="wrap">
+    <!-- Top bar: Back + QR Code + Theme + Lang -->
+    <div class="ar-topbar">
+      <a class="ar-back" href="/#vara">
+        <span>←</span>
+        <span data-i18n="back">Trở về hành trình</span>
+      </a>
+      <div class="ar-topbar-right">
+        <button type="button" class="ar-qr-trigger" id="openQrBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h2M19 14v2"/></svg>
+          <span data-i18n="qrBtnOpen">Mã QR mở trên điện thoại</span>
+        </button>
+        <button class="theme" id="themeBtn" aria-label="Ban ngày / Ban đêm" title="Ban ngày / Ban đêm">
+          <span class="k"></span>
+          <svg class="s" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
+          <svg class="m" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg>
+          <i class="st" style="left:22px;top:9px"></i><i class="st" style="left:30px;top:22px"></i><i class="st" style="left:15px;top:25px"></i>
+        </button>
+        <div class="lang" id="lang" data-l="vi" role="group" aria-label="Language">
+          <span class="knob"></span>
+          <button data-lang="vi" class="on">VI</button><button data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Studio Grid -->
+    <section class="ar-layout">
+      <!-- Left Column: Info & 6 Gesture Controls -->
+      <div class="ar-info-col">
+        <div class="ar-badge-pill">
+          <span>✨</span>
+          <span data-i18n="eyebrow">VARA · BẢN THỬ NGHIỆM AR</span>
+        </div>
+
+        <div>
+          <h1 class="ar-title" data-i18n="title">Mời Vara bước vào không gian của bạn</h1>
+          <p class="ar-desc" style="margin-top:10px" data-i18n="description">Xoay để ngắm Vara ở dạng 3D. Trên thiết bị di động tương thích, chọn nút AR để đặt bạn đồng hành lên bàn hoặc sàn nhà xung quanh bạn.</p>
+        </div>
+
+        <!-- Device & AR Capability Banner -->
+        <div class="ar-banner neutral" id="arBanner">
+          <svg id="arBannerIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <p id="arBannerMsg">Đang kiểm tra khả năng AR của thiết bị…</p>
+        </div>
+
+        <!-- Primary AR Launch Button -->
+        <button type="button" class="ar-launch-btn" id="launchArBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          <span data-i18n="launchAr">Bật Camera AR (Đặt Vara vào không gian)</span>
+          <span class="ar-ready-dot" id="arReadyDot"></span>
+        </button>
+
+        <!-- 6 Interactive Action Gestures -->
+        <div>
+          <div class="ar-controls-head">
+            <span class="ar-controls-title" data-i18n="controlsTitle">Chọn một động tác</span>
+            <button type="button" class="ar-next-btn" id="nextClipBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span data-i18n="arNextAction">Đổi động tác</span>
+            </button>
+          </div>
+          <div class="ar-clips-grid" id="clipsGrid"></div>
+        </div>
+      </div>
+
+      <!-- Right Column: 3D & AR Canvas Card -->
+      <div class="ar-viewer-card">
+        <div class="ar-viewer-glow"></div>
+
+        <!-- Loading Progress Overlay -->
+        <div class="ar-overlay-box" id="loadingOverlay">
+          <div class="ar-load-pill">
+            <span class="ping-dot"></span>
+            <span id="loadingText">Đang gọi Vara đến…</span>
+          </div>
+          <div class="ar-prog-track">
+            <div class="ar-prog-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- Error Overlay -->
+        <div class="ar-overlay-box hidden" id="errorOverlay">
+          <svg style="width:36px;height:36px;color:#f59e0b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
+          <p style="max-width:280px;font-size:14px;font-weight:600" data-i18n="loadFailed">Chưa thể kết nối tới mô hình 3D. Vui lòng thử tải lại hoặc kiểm tra mạng.</p>
+          <button type="button" class="go-btn" id="retryBtn">
+            <span data-i18n="loadRetry">Thử tải lại</span>
+          </button>
+        </div>
+
+        <model-viewer
+          id="varaViewer"
+          src="/ar/vara/vara.glb"
+          poster="/assets/vara_hero.webp"
+          alt="Vara, the Varabond companion"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          ar-placement="floor"
+          ar-scale="auto"
+          autoplay
+          auto-rotate
+          auto-rotate-delay="1400"
+          camera-controls
+          camera-orbit="20deg 72deg 105%"
+          environment-image="neutral"
+          interaction-prompt="auto"
+          animation-name="Idle_3"
+          reveal="auto"
+          shadow-intensity="0.85"
+          touch-action="pan-y"
+          loading="eager"
+        >
+          <!-- Built-in AR slot button -->
+          <button slot="ar-button" type="button" class="ar-slot-btn">
+            <span>📦</span>
+            <span data-i18n="arButton">Đặt Vara trong không gian (AR)</span>
+          </button>
+
+          <!-- WebXR In-AR Live Action Overlay -->
+          <div class="ar-webxr-hud" id="webxrHud">
+            <div class="ar-webxr-top">
+              <span><b data-i18n="arPlayingAction">Đang diễn:</b> <span id="webxrActiveLabel">Lắng nghe thành phố</span></span>
+              <button type="button" id="webxrNextBtn" data-i18n="arNextAction">Đổi động tác</button>
+            </div>
+            <div class="ar-webxr-strip" id="webxrClipsStrip"></div>
+          </div>
+        </model-viewer>
+
+        <span class="ar-demo-tag" data-i18n="demoBadge">3D & AR DEMO</span>
+      </div>
+    </section>
+
+    <!-- Bottom Informational Cards -->
+    <section class="ar-cards-bottom">
+      <div class="ar-subcard">
+        <div class="ic-box">💜</div>
+        <div>
+          <h2 data-i18n="fallbackTitle">Một bản thử nghiệm nhẹ nhàng</h2>
+          <p data-i18n="fallbackDesc">Demo này không ghi nhận nhiệm vụ, vị trí hay phần thưởng. Nếu AR chưa khả dụng, bạn vẫn có thể xoay và xem Vara ở dạng 3D.</p>
+        </div>
+      </div>
+      <div class="ar-subcard">
+        <div class="ic-box">🛡️</div>
+        <div>
+          <h2 data-i18n="safetyTitle">Trải nghiệm an toàn</h2>
+          <p data-i18n="safetyDesc">Chỉ dùng AR khi đang đứng yên tại nơi đủ sáng và an toàn; không sử dụng điện thoại khi băng qua đường.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Native Light-Dismiss QR Dialog -->
+<dialog class="qr-dialog" id="qrDialog" closedby="any" aria-labelledby="qrDialogTitle">
+  <div class="qr-dialog-in">
+    <div class="qr-dialog-head">
+      <div>
+        <span class="eyebrow" data-i18n="qrModalBadge">TRẢI NGHIỆM WEBAR TRÊN DI ĐỘNG</span>
+        <h2 class="display qr-dialog-title" id="qrDialogTitle" data-i18n="qrModalTitle">Quét mã QR để đặt Vara vào không gian thật</h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="sheet-x" aria-label="Đóng" autofocus>✕</button>
+      </form>
+    </div>
+    <p class="qr-dialog-sub" data-i18n="qrModalSubtitle">Dùng camera điện thoại (iOS Safari hoặc Android Chrome) quét mã bên dưới để mở trực tiếp phòng thử nghiệm 3D & AR và thử 6 hành động của Vara.</p>
+    <div class="qr-dialog-grid">
+      <div class="qr-box-wrap">
+        <div class="qr-svg-box" id="qrSvgContainer"></div>
+        <span class="qr-url-pill" id="qrUrlText"></span>
+        <button type="button" class="go-btn qr-copy-btn" id="qrCopyBtn">
+          <span id="qrCopyLabel" data-i18n="qrCopyLink">Sao chép liên kết</span>
+        </button>
+      </div>
+      <div class="qr-steps-col">
+        <div class="demo-lab" data-i18n="qrSelectActionLabel">Chọn sẵn hành động khi mở trên điện thoại:</div>
+        <div class="qr-action-chips" id="qrActionChips"></div>
+        <ol class="qr-steps-list">
+          <li data-i18n="qrStep1">1. Mở Camera hoặc ứng dụng quét QR trên điện thoại</li>
+          <li data-i18n="qrStep2">2. Mở liên kết bằng trình duyệt Chrome (Android) hoặc Safari (iOS)</li>
+          <li data-i18n="qrStep3">3. Nhấn 'Bật Camera AR' và hướng xuống mặt bàn/sàn nhà để đặt Vara</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="/js/qr-helper.js"></script>
+<script>
+(function(){
+  'use strict';
+  var CLIPS = [
+    { id: 'Idle_3', label: 'actionIdle', icon: '✨' },
+    { id: 'Gentlemans_Bow', label: 'actionBow', icon: '👋' },
+    { id: 'Arm_Circle_Shuffle', label: 'actionWings', icon: '🪽' },
+    { id: 'Gangnam_Groove', label: 'actionGangnam', icon: '🕺' },
+    { id: 'Breakdance_1990', label: 'actionBreakdance', icon: '🤸' },
+    { id: 'Cardio_Dance', label: 'actionCardio', icon: '🎉' }
+  ];
+
+  var T = {
+    vi: {
+      pageTitle: 'Varabond — Trải nghiệm 3D & AR cùng Vara',
+      eyebrow: 'VARA · BẢN THỬ NGHIỆM AR',
+      title: 'Mời Vara bước vào không gian của bạn',
+      description: 'Xoay để ngắm Vara ở dạng 3D. Trên thiết bị di động tương thích, chọn nút AR để đặt bạn đồng hành lên bàn hoặc sàn nhà xung quanh bạn.',
+      back: 'Trở về hành trình',
+      demoBadge: '3D & AR DEMO',
+      loading: 'Đang gọi Vara đến…',
+      controlsTitle: 'Chọn một động tác',
+      actionIdle: 'Lắng nghe thành phố',
+      actionBow: 'Cúi chào',
+      actionWings: 'Xoay cánh',
+      actionGangnam: 'Nhảy Gangnam',
+      actionBreakdance: 'Breakdance',
+      actionCardio: 'Vũ điệu vui vẻ',
+      arPlayingAction: 'Đang diễn:',
+      arNextAction: 'Đổi động tác',
+      arButton: 'Đặt Vara trong không gian (AR)',
+      launchAr: 'Bật Camera AR (Đặt Vara vào không gian)',
+      arReady: 'Thiết bị & trình duyệt sẵn sàng! Bấm nút bên dưới để mở camera AR.',
+      arNotSupported: 'Trình duyệt chưa hỗ trợ AR trực tiếp trên thiết bị này. Bạn vẫn có thể xoay ngắm và tương tác với Vara dạng 3D, hoặc quét mã QR bằng điện thoại!',
+      arInAppWarning: 'Bạn đang mở bằng trình duyệt trong ứng dụng (Zalo/Facebook/TikTok). Vui lòng chọn "Mở bằng trình duyệt ngoài" (Chrome/Safari) để bật camera AR.',
+      arHttpsWarning: 'Camera AR yêu cầu kết nối bảo mật HTTPS. Nếu đang thử nghiệm qua IP nội bộ (http://), trình duyệt có thể chặn camera.',
+      loadRetry: 'Thử tải lại',
+      loadFailed: 'Chưa thể kết nối tới mô hình 3D. Vui lòng thử tải lại hoặc kiểm tra mạng.',
+      androidReady: 'Thiết bị Android sẵn sàng mở trải nghiệm đặt Vara bằng AR.',
+      iosHint: 'Thiết bị iOS có thể xem Vara dạng 3D và kích hoạt AR Quick Look.',
+      desktopHint: 'Bạn đang xem trên máy tính: hãy xoay ngắm 3D & chọn thử 6 động tác bên dưới, hoặc bấm "Mã QR mở trên điện thoại" để đặt Vara vào không gian thật!',
+      fallbackTitle: 'Một bản thử nghiệm nhẹ nhàng',
+      fallbackDesc: 'Demo này không ghi nhận nhiệm vụ, vị trí hay phần thưởng. Nếu AR chưa khả dụng, bạn vẫn có thể xoay và xem Vara ở dạng 3D.',
+      safetyTitle: 'Trải nghiệm an toàn',
+      safetyDesc: 'Chỉ dùng AR khi đang đứng yên tại nơi đủ sáng và an toàn; không sử dụng điện thoại khi băng qua đường.',
+      qrBtnOpen: 'Mã QR mở trên điện thoại',
+      qrModalBadge: 'TRẢI NGHIỆM WEBAR TRÊN DI ĐỘNG',
+      qrModalTitle: 'Quét mã QR để đặt Vara vào không gian thật',
+      qrModalSubtitle: 'Dùng camera điện thoại (iOS Safari hoặc Android Chrome) quét mã bên dưới để mở trực tiếp phòng thử nghiệm 3D & AR và thử 6 hành động của Vara.',
+      qrSelectActionLabel: 'Chọn sẵn hành động khi mở trên điện thoại:',
+      qrStep1: '1. Mở Camera hoặc ứng dụng quét QR trên điện thoại',
+      qrStep2: '2. Mở liên kết bằng trình duyệt Chrome (Android) hoặc Safari (iOS)',
+      qrStep3: '3. Nhấn "Bật Camera AR" và hướng xuống mặt bàn/sàn nhà để đặt Vara',
+      qrCopyLink: 'Sao chép liên kết',
+      qrCopied: 'Đã sao chép ✓'
+    },
+    en: {
+      pageTitle: 'Varabond — 3D & AR Experience with Vara',
+      eyebrow: 'VARA · AR PREVIEW',
+      title: 'Invite Vara into your space',
+      description: 'Rotate to meet Vara in 3D. On a compatible mobile device, tap the AR button to place your companion on a table or floor.',
+      back: 'Return to the journey',
+      demoBadge: '3D & AR DEMO',
+      loading: 'Calling Vara over…',
+      controlsTitle: 'Choose a gesture',
+      actionIdle: 'Listening to the city',
+      actionBow: 'A gentle bow',
+      actionWings: 'Wing swirl',
+      actionGangnam: 'Gangnam Dance',
+      actionBreakdance: 'Breakdance',
+      actionCardio: 'Energy Dance',
+      arPlayingAction: 'Performing:',
+      arNextAction: 'Next gesture',
+      arButton: 'Place Vara in your space (AR)',
+      launchAr: 'Launch AR Camera (Place Vara in Space)',
+      arReady: 'Device & browser ready! Tap the button below to open AR camera.',
+      arNotSupported: 'Browser does not support direct AR on this device. You can still rotate and interact with Vara in 3D, or scan the QR code with your phone!',
+      arInAppWarning: 'You are viewing inside an in-app browser (Zalo/Facebook/TikTok). Please choose "Open in external browser" (Chrome/Safari) to enable AR camera.',
+      arHttpsWarning: 'AR camera requires a secure HTTPS connection. If testing via local HTTP, browser may block camera permissions.',
+      loadRetry: 'Retry loading',
+      loadFailed: 'Could not load 3D model. Please retry or check network connection.',
+      androidReady: 'This Android device can open Vara\'s AR placement experience.',
+      iosHint: 'iOS devices can explore Vara in 3D and trigger AR Quick Look.',
+      desktopHint: 'Viewing on desktop: rotate Vara in 3D and test all 6 gestures below, or click "Mobile QR Code" to place Vara in your real space!',
+      fallbackTitle: 'A gentle preview',
+      fallbackDesc: 'This demo never records quests, location, or rewards. If AR is unavailable, you can still rotate and explore Vara in 3D.',
+      safetyTitle: 'Enjoy safely',
+      safetyDesc: 'Use AR only while stationary in a bright, safe place; never use your phone while crossing a street.',
+      qrBtnOpen: 'Mobile QR Code',
+      qrModalBadge: 'MOBILE WEBAR EXPERIENCE',
+      qrModalTitle: 'Scan QR to place Vara in your real space',
+      qrModalSubtitle: 'Use your phone camera (iOS Safari or Android Chrome) to scan the code below and launch the 3D & AR studio with all 6 Vara gestures.',
+      qrSelectActionLabel: 'Pre-select gesture when opening on mobile:',
+      qrStep1: '1. Open your phone\'s Camera or QR scanner',
+      qrStep2: '2. Open the link in Chrome (Android) or Safari (iOS)',
+      qrStep3: '3. Tap "Launch AR Camera" and point at a table/floor to place Vara',
+      qrCopyLink: 'Copy link',
+      qrCopied: 'Copied ✓'
+    }
+  };
+
+  var LANG = 'vi';
+  try {
+    var savedLang = localStorage.getItem('vb_lang');
+    if (savedLang === 'en' || savedLang === 'vi') LANG = savedLang;
+  } catch (e) {}
+
+  var NIGHT = document.documentElement.classList.contains('night');
+
+  // Parse initial clip from URL ?clip=...
+  var params = new URLSearchParams(window.location.search);
+  var initialClip = params.get('clip');
+  var activeClip = CLIPS.some(function(c){ return c.id === initialClip; }) ? initialClip : 'Idle_3';
+
+  var viewer = document.getElementById('varaViewer');
+  var ready = false;
+  var progress = 0;
+  var loadError = false;
+  var canAr = null;
+  var arStatus = 'not-presenting';
+
+  function detectPlatform() {
+    var ua = navigator.userAgent || '';
+    if (/Android/i.test(ua)) return 'android';
+    if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+    return 'desktop';
+  }
+  function detectInAppBrowser() {
+    var ua = navigator.userAgent || navigator.vendor || '';
+    return /FBAN|FBAV|Instagram|Line|Kakaotalk|MicroMessenger|Zalo|musical_ly|Snapchat/i.test(ua);
+  }
+
+  var platform = detectPlatform();
+  var isInApp = detectInAppBrowser();
+  var isSecure = typeof window !== 'undefined' ? window.isSecureContext : true;
+
+  function L() { return T[LANG]; }
+
+  function renderClips() {
+    var grid = document.getElementById('clipsGrid');
+    var strip = document.getElementById('webxrClipsStrip');
+    var qrChips = document.getElementById('qrActionChips');
+    var d = L();
+
+    grid.innerHTML = CLIPS.map(function(clip) {
+      var sel = activeClip === clip.id;
+      return '<button type="button" class="ar-clip-btn" data-clip="' + clip.id + '" aria-pressed="' + sel + '">' +
+        '<span class="ic">' + clip.icon + '</span>' +
+        '<span class="lb">' + d[clip.label] + '</span>' +
+      '</button>';
+    }).join('');
+
+    strip.innerHTML = CLIPS.map(function(clip) {
+      var sel = activeClip === clip.id;
+      return '<button type="button" class="ar-webxr-chip' + (sel ? ' on' : '') + '" data-clip="' + clip.id + '">' +
+        '<span>' + clip.icon + ' ' + d[clip.label] + '</span>' +
+      '</button>';
+    }).join('');
+
+    if (qrChips) {
+      qrChips.innerHTML = CLIPS.map(function(clip) {
+        var sel = activeClip === clip.id;
+        return '<button type="button" class="qr-chip' + (sel ? ' on' : '') + '" data-clip="' + clip.id + '" aria-pressed="' + sel + '">' +
+          '<span>' + clip.icon + ' ' + d[clip.label] + '</span>' +
+        '</button>';
+      }).join('');
+    }
+
+    var activeObj = CLIPS.find(function(c){ return c.id === activeClip; }) || CLIPS[0];
+    var webxrLabel = document.getElementById('webxrActiveLabel');
+    if (webxrLabel) webxrLabel.textContent = d[activeObj.label];
+  }
+
+  function updateBanner() {
+    var d = L();
+    var banner = document.getElementById('arBanner');
+    var msg = document.getElementById('arBannerMsg');
+    var dot = document.getElementById('arReadyDot');
+    var type = 'neutral';
+    var text = '';
+
+    if (isInApp) {
+      type = 'warning';
+      text = d.arInAppWarning;
+    } else if (!isSecure && platform !== 'desktop') {
+      type = 'warning';
+      text = d.arHttpsWarning;
+    } else if (canAr === true) {
+      type = 'success';
+      text = d.arReady;
+    } else if (canAr === false) {
+      type = 'info';
+      text = platform === 'desktop' ? d.desktopHint : d.arNotSupported;
+    } else {
+      type = 'neutral';
+      text = platform === 'android' ? d.androidReady : platform === 'ios' ? d.iosHint : d.desktopHint;
+    }
+
+    banner.className = 'ar-banner ' + type;
+    msg.textContent = text;
+    if (dot) dot.classList.toggle('on', canAr === true);
+  }
+
+  function updateOverlayUI() {
+    var d = L();
+    var loadingOverlay = document.getElementById('loadingOverlay');
+    var errorOverlay = document.getElementById('errorOverlay');
+    var loadingText = document.getElementById('loadingText');
+    var progressBar = document.getElementById('progressBar');
+    var launchBtn = document.getElementById('launchArBtn');
+
+    loadingOverlay.classList.toggle('hidden', ready || loadError);
+    errorOverlay.classList.toggle('hidden', !loadError);
+    loadingText.textContent = d.loading + (progress > 0 ? ' (' + progress + '%)' : '');
+    progressBar.style.width = Math.max(10, progress) + '%';
+    launchBtn.disabled = !ready || loadError;
+  }
+
+  function selectClip(clipId) {
+    activeClip = clipId;
+    if (viewer) {
+      viewer.setAttribute('animation-name', clipId);
+      viewer.animationName = clipId;
+      if (typeof viewer.play === 'function') viewer.play();
+    }
+    renderClips();
+    updateQrDisplay();
+    try {
+      var u = new URL(window.location.href);
+      u.searchParams.set('clip', clipId);
+      window.history.replaceState({}, '', u.toString());
+    } catch (e) {}
+  }
+
+  function nextClip() {
+    var idx = CLIPS.findIndex(function(c){ return c.id === activeClip; });
+    var next = CLIPS[(idx + 1) % CLIPS.length];
+    selectClip(next.id);
+  }
+
+  function applyLang() {
+    var d = L();
+    document.documentElement.lang = LANG;
+    document.title = d.pageTitle;
+    var langBox = document.getElementById('lang');
+    if (langBox) langBox.setAttribute('data-l', LANG);
+    Array.prototype.forEach.call(document.querySelectorAll('#lang button'), function(b) {
+      b.classList.toggle('on', b.dataset.lang === LANG);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function(el) {
+      var k = el.getAttribute('data-i18n');
+      if (d[k]) el.textContent = d[k];
+    });
+    renderClips();
+    updateBanner();
+    updateOverlayUI();
+    updateQrDisplay();
+    try { localStorage.setItem('vb_lang', LANG); } catch (e) {}
+  }
+
+  // Bind clip selection
+  document.getElementById('clipsGrid').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-clip]');
+    if (btn) selectClip(btn.getAttribute('data-clip'));
+  });
+  document.getElementById('webxrClipsStrip').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var btn = e.target.closest('[data-clip]');
+    if (btn) selectClip(btn.getAttribute('data-clip'));
+  });
+  document.getElementById('nextClipBtn').addEventListener('click', nextClip);
+  document.getElementById('webxrNextBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    nextClip();
+  });
+
+  // Launch AR
+  document.getElementById('launchArBtn').addEventListener('click', function() {
+    if (viewer && typeof viewer.activateAR === 'function') {
+      viewer.activateAR();
+    }
+  });
+
+  // Retry load
+  document.getElementById('retryBtn').addEventListener('click', function() {
+    loadError = false;
+    ready = false;
+    progress = 0;
+    updateOverlayUI();
+    if (viewer) {
+      var cur = viewer.getAttribute('src') || '/ar/vara/vara.glb';
+      viewer.setAttribute('src', '');
+      setTimeout(function() { viewer.setAttribute('src', cur); }, 60);
+    }
+  });
+
+  // Model-viewer events
+  function checkArCapability() {
+    if (viewer && typeof viewer.canActivateAR === 'boolean') {
+      canAr = viewer.canActivateAR;
+      updateBanner();
+    }
+  }
+
+  if (viewer) {
+    viewer.setAttribute('animation-name', activeClip);
+    viewer.animationName = activeClip;
+
+    viewer.addEventListener('load', function() {
+      ready = true;
+      progress = 100;
+      loadError = false;
+      viewer.animationName = activeClip;
+      if (typeof viewer.play === 'function') viewer.play();
+      checkArCapability();
+      updateOverlayUI();
+    });
+
+    viewer.addEventListener('progress', function(e) {
+      var raw = (e && e.detail && e.detail.totalProgress) || 0;
+      progress = Math.min(100, Math.round(raw * 100));
+      updateOverlayUI();
+    });
+
+    viewer.addEventListener('error', function() {
+      loadError = true;
+      ready = true;
+      updateOverlayUI();
+    });
+
+    viewer.addEventListener('ar-status', function(e) {
+      var st = e && e.detail && e.detail.status;
+      if (st) {
+        arStatus = st;
+        document.getElementById('webxrHud').classList.toggle('active', arStatus === 'session-started');
+      }
+      checkArCapability();
+    });
+
+    if (viewer.loaded) {
+      ready = true;
+      progress = 100;
+      updateOverlayUI();
+    }
+    setInterval(checkArCapability, 500);
+    setTimeout(function() {
+      ready = true;
+      checkArCapability();
+      updateOverlayUI();
+    }, 8000);
+  }
+
+  // Theme & Language toggles
+  document.getElementById('themeBtn').addEventListener('click', function() {
+    NIGHT = !NIGHT;
+    document.documentElement.classList.toggle('night', NIGHT);
+    try { localStorage.setItem('vb_theme', NIGHT ? 'night' : 'day'); } catch (e) {}
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#lang button'), function(b) {
+    b.addEventListener('click', function() {
+      if (LANG !== b.dataset.lang) {
+        LANG = b.dataset.lang;
+        applyLang();
+      }
+    });
+  });
+
+  // QR Dialog
+  var qrDialog = document.getElementById('qrDialog');
+  function getArTargetUrl() {
+    var base = window.location.origin + '/ar-demo/vara';
+    return activeClip ? base + '?clip=' + encodeURIComponent(activeClip) : base;
+  }
+  function updateQrDisplay() {
+    var url = getArTargetUrl();
+    var svgBox = document.getElementById('qrSvgContainer');
+    var urlText = document.getElementById('qrUrlText');
+    if (svgBox && window.VarabondQR) {
+      svgBox.innerHTML = window.VarabondQR.renderSvg(url, LANG === 'en' ? 'QR Code for Vara AR Demo' : 'Mã QR mở trang thử nghiệm AR Vara');
+    }
+    if (urlText) urlText.textContent = url;
+  }
+  if (qrDialog && window.VarabondQR) {
+    window.VarabondQR.setupDialogLightDismiss(qrDialog);
+    document.getElementById('openQrBtn').addEventListener('click', function() {
+      updateQrDisplay();
+      qrDialog.showModal();
+    });
+    document.getElementById('qrActionChips').addEventListener('click', function(e) {
+      var b = e.target.closest('[data-clip]');
+      if (b) selectClip(b.getAttribute('data-clip'));
+    });
+    document.getElementById('qrCopyBtn').addEventListener('click', function() {
+      var url = getArTargetUrl();
+      var lbl = document.getElementById('qrCopyLabel');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          lbl.textContent = L().qrCopied;
+          setTimeout(function() { lbl.textContent = L().qrCopyLink; }, 1800);
+        });
+      }
+    });
+  }
+
+  applyLang();
+})();
+</script>
+</body>
+</html>
+
