@@ -58,7 +58,7 @@
     <div class="cta-row rv" style="--d:.75s" id="top-cta">
       <a class="btn light" href="#vara"><span data-i18n="cta_start">Bắt đầu hành trình</span> <span class="arr">→</span></a>
       <a class="btn ghost2" href="/ar-demo/vara" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.35);backdrop-filter:blur(10px)"><span data-i18n="cta_try_ar">Thử AR cùng Vara ✨</span></a>
-      <span class="play-badge"><svg viewBox="0 0 24 24"><path fill="#37a8b6" d="M3.6 2.2 13.3 12l-9.7 9.8c-.4-.2-.6-.6-.6-1.1V3.3c0-.5.2-.9.6-1.1z"/><path fill="#e7aa59" d="m16.6 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#fff" d="M16.6 15.3 13.3 12l-9.7 9.8c.4.2.9.2 1.4-.1z"/><path fill="#927ddb" d="M16.6 8.7 5 2.3c-.5-.3-1-.3-1.4-.1l9.7 9.8z"/></svg><span><small data-i18n="soon_k">Sắp ra mắt trên</small><b>Android</b></span></span>
+      <a class="play-badge" href="https://github.com/trander-25/varabond-download/releases/latest/download/Varabond_Application.apk" download="Varabond_Application.apk" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#37a8b6" d="M3.6 2.2 13.3 12l-9.7 9.8c-.4-.2-.6-.6-.6-1.1V3.3c0-.5.2-.9.6-1.1z"/><path fill="#e7aa59" d="m16.6 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#fff" d="M16.6 15.3 13.3 12l-9.7 9.8c.4.2.9.2 1.4-.1z"/><path fill="#927ddb" d="M16.6 8.7 5 2.3c-.5-.3-1-.3-1.4-.1l9.7 9.8z"/></svg><span><small data-i18n="soon_k">Sắp ra mắt trên</small><b>Android</b></span></a>
     </div>
   </div>
   <div class="wrap cv-bar">
@@ -73,7 +73,6 @@
     <div class="meet-center">
       <span class="eyebrow rv" data-i18n="meet_eye">Người bạn đồng hành</span>
       <div class="ar-stage scanning" id="ar">
-        <div class="ret"><i></i><i></i><i></i><i></i></div>
         <div class="scan"></div>
         <div class="plane"><div class="shadow" id="arShadow"></div></div>
         <div class="flash"></div>
@@ -134,13 +133,9 @@
       <div class="usp-l">
         <h3 data-i18n="u1_t">AR tương tác</h3>
         <p data-i18n="u1_p">Ấn Ký, Cảnh Ký Ức và chính Vara xuất hiện ngay trên khung cảnh thật qua camera điện thoại. Bạn chạm, quan sát và giải mã, không chỉ đứng xem.</p>
-        <div class="usp-ar-actions">
-          <a class="usp-ar-btn" href="/ar-demo/vara"><span data-i18n="usp_try_ar">Dùng thử AR & 6 hành động →</span></a>
-          <button type="button" class="usp-ar-qr" data-open-qr><span>📱</span><span data-i18n="ar_try_qr">Mã QR Điện Thoại</span></button>
-        </div>
       </div>
-      <div class="usp-c"><div class="usp-sq"><img class="tb" src="{{A:app_usp_ar}}" alt="">
-        <div class="arui"><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><span class="chip t"><i class="dot"></i><span data-i18n="u1_c1">Lăng kính Ký Giới · LIVE</span></span><div class="mark"><img src="{{A:sym_star}}" alt=""></div><a class="chip b" href="/ar-demo/vara" style="text-decoration:none;color:#fff" data-i18n="u1_c2">Ấn Ký đã xuất hiện · Chạm để mở</a></div>
+      <div class="usp-c"><div class="usp-sq usp-video">
+        <video class="usp-video-clip" id="uspArVideo" muted playsinline preload="metadata" data-video-sources="AR_anky.mp4,AR_endchapter0.mp4"></video>
       </div></div>
       <ul class="usp-r"><li data-i18n="u1_l1">Ấn Ký 3D</li><li data-i18n="u1_l2">Cảnh Ký Ức</li><li data-i18n="u1_l3">Vara trên cảnh thật</li><li data-i18n="u1_l4">Chỉ mở camera khi cần</li></ul>
     </div>
@@ -330,13 +325,14 @@
         </article>
         <article class="p-panel" role="tabpanel">
           <h3 data-i18n="p6_h">Đội ngũ Varabond</h3>
-          <p data-i18n="p6_a">Thông tin thành viên đang được cập nhật.</p>
+          <p data-i18n="p6_a">Những người đứng sau hành trình Varabond.</p>
           <div class="team">
-            <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b data-i18n="mem">Thành viên</b><span data-i18n="upd">Đang cập nhật</span></div>
-            <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b data-i18n="mem">Thành viên</b><span data-i18n="upd">Đang cập nhật</span></div>
-            <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b data-i18n="mem">Thành viên</b><span data-i18n="upd">Đang cập nhật</span></div>
-            <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b data-i18n="mem">Thành viên</b><span data-i18n="upd">Đang cập nhật</span></div>
-          </div>
+                <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b>Nguyễn Thế Anh</b><span>Fullstack Developer / Tech Lead</span></div>
+                <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b>Trần Hùng Vĩ</b><span>Fullstack Developer / AI Engineer</span></div>
+                <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b>Vũ Thế Vinh</b><span>Fullstack Developer / AR Developer</span></div>
+                <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b>Lê Ngọc Vân Anh</b><span>Business Development / Finance Management</span></div>
+                <div class="member"><span class="av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></span><b>Nguyễn Ngọc Phương Linh</b><span>MarCom Manager</span></div>
+              </div>
         </article>
       </div>
     </div>
@@ -394,24 +390,20 @@
       <div class="f-yellow rv" style="--d:.1s"><div class="say"><img src="{{A:vara_search}}" alt=""><p data-i18n="f2_say">“Mình nhận ra bạn đang đứng ở đâu đó! Đến gần là mình kể ngay câu chuyện của nơi ấy.”</p></div>
         <div class="tag-row"><span class="tag" data-i18n="f2_c1">📡 Định vị GPS</span><span class="tag" data-i18n="f2_c2">🏛 Lịch sử & kiến trúc</span><span class="tag" data-i18n="f2_c3">💬 Trò chuyện cùng Vara</span></div></div>
       <div class="f-script rv" data-i18n="exp">Trải nghiệm</div>
-      <div class="f-demo rv" style="--d:.1s" id="demoGeo">
-        <div class="geo" id="geoMap">
-          <svg viewBox="0 0 400 150" preserveAspectRatio="none"><path d="M20 75 C90 30 150 120 220 70 S330 60 360 75" stroke="#cce8f5" stroke-width="16" fill="none" stroke-linecap="round"/><path d="M20 75 C90 30 150 120 220 70 S330 60 360 75" stroke="#163b65" stroke-width="2" stroke-dasharray="6 6" fill="none"/></svg>
-          <span class="fence"></span>
-          <span class="dest"><svg viewBox="0 0 24 24"><path fill="#e7aa59" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg></span>
-          <span class="me" id="geoMe"></span>
-          <span class="dist" id="geoDist">450 m</span>
-        </div>
-        <label class="demo-lab" for="geoRange" data-i18n="d2_lab">Kéo để đi bộ tới Bưu điện</label>
-        <input class="range" id="geoRange" type="range" min="0" max="100" value="0" style="margin-top:10px">
-        <div class="vpop" id="geoPop"><img src="{{A:vara_wave}}" alt=""><p data-i18n="d2_pop">Ding! Bạn đã tới Bưu điện Trung tâm Sài Gòn. Thử ngẩng lên nhìn phía trên lối vào chính xem — có một thứ vẫn đang đếm thời gian đấy!</p></div>
+      <div class="f-demo voice-demo rv" style="--d:.1s" id="demoVoice">
+        <div class="voice-demo-top"><div><span class="demo-lab" data-i18n="f2_voice_eyebrow">Voice chat cùng Vara</span><h3 data-i18n="f2_voice_title">Hỏi Vara về thành phố</h3></div><span class="voice-status" id="voiceStatus" data-i18n="f2_voice_ready">Sẵn sàng lắng nghe</span></div>
+        <p class="voice-guide" data-i18n="f2_voice_intro">Nhấn micro, nói một câu hỏi ngắn rồi nhấn dừng. Vara sẽ trả lời bằng chữ và giọng nói khi sẵn sàng.</p>
+        <div class="voice-controls"><button class="voice-mic" id="voiceMic" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg><span id="voiceMicLabel" data-i18n="f2_voice_start">Nhấn để nói</span></button><span class="voice-timer" id="voiceTimer">00:00</span></div>
+        <p class="voice-hint" id="voiceHint" data-i18n="f2_voice_hint">Micro chỉ được bật sau khi bạn nhấn nút.</p>
+        <div class="voice-response" id="voiceResponse" hidden><span class="demo-lab" data-i18n="f2_voice_reply">Vara trả lời</span><p id="voiceReply" aria-live="polite"></p><audio id="voiceReplyAudio" controls preload="metadata" hidden></audio></div>
+        <div class="voice-story"><span class="demo-lab" data-i18n="f2_voice_audio">Hoặc nghe Vara giới thiệu</span><audio id="storytellingAudio" controls preload="metadata" src="{{A:audio_storytelling}}"></audio></div>
       </div>
     </div>
     <div class="f-right"><div class="f-stick">
       <div class="f-intro rv"><h3 data-i18n="intro">Giới thiệu tiện ích</h3><p data-i18n="f2_i">Khi bạn đến gần địa điểm được hỗ trợ, Vara nhận biết vị trí qua GPS và vùng định vị, rồi chủ động giới thiệu lịch sử, kiến trúc, văn hoá và gợi ý những hoạt động đáng trải nghiệm. Đây là tính năng cốt lõi của phiên bản miễn phí.</p></div>
       <div class="f-show">
-        <div class="phone lightzone tiltable rv rv-s" style="--d:.15s"><div class="screen real-shot">
-          <img class="app-shot" src="{{A:app_screen_discover}}" alt="Khám phá — Bưu điện Trung tâm Sài Gòn" loading="lazy">
+        <div class="phone discover-phone lightzone tiltable rv rv-s" style="--d:.15s"><div class="screen real-shot">
+          <img class="app-shot discover-shot" src="{{A:app_screen_discover}}" alt="Khám phá — Bưu điện Trung tâm Sài Gòn" loading="lazy">
         </div></div>
         <ul class="f-list rv" style="--d:.25s"><li data-i18n="f2_l1">Định vị theo vị trí</li><li data-i18n="f2_l2">Vara kể chuyện</li><li data-i18n="f2_l3">Lịch sử · Kiến trúc</li><li data-i18n="f2_l4">Gợi ý trải nghiệm</li></ul>
       </div>
@@ -498,7 +490,32 @@
         <div class="pass" id="passSlots"></div>
         <div class="pass-meta"><button class="go-btn" id="stampBtn"><span data-i18n="d4_btn">Đóng dấu</span> 🪶</button><span class="pbar"><i id="passBar"></i></span><b id="passCount" style="color:var(--deep)">0/5</b></div>
         <p class="note" data-i18n="d4_note">Mô phỏng: trong ứng dụng, huy hiệu chỉ được đóng khi bạn có mặt tại địa điểm.</p>
-        <div class="grand" id="grand"><div><img src="{{A:vara_victory}}" alt=""><b data-i18n="d4_g">Đại Huy Hiệu!</b><p data-i18n="d4_gp">Bạn đã sưu tầm đủ bộ 5 huy hiệu.</p><button id="passReset" data-i18n="d4_r">Chơi lại</button></div></div>
+        <div class="grand" id="grand" role="region" aria-live="polite">
+              <div class="grand-in">
+                <b class="grand-t" data-i18n="d4_g">Đại Huy Hiệu!</b>
+                <p class="grand-p" data-i18n="d4_gp">Bạn đã sưu tầm đủ bộ 5 huy hiệu.</p>
+                <p class="grand-s" data-i18n="bd_sub">Chụp một tấm ảnh để ghép vào huy hiệu của riêng bạn.</p>
+                <div class="bd-stage" id="bdStage">
+                  <div class="bd-photo">
+                    <video id="bdVideo" playsinline muted></video>
+                    <img id="bdShot" alt="">
+                    <div class="bd-ph" id="bdPh"><img src="assets/vara_stamp.webp" alt=""></div>
+                  </div>
+                  <img class="bd-frame" id="bdFrame" alt="">
+                </div>
+                <p class="bd-msg" id="bdMsg" role="status"></p>
+                <div class="bd-btns">
+                  <button type="button" class="bd-b main" id="bdCam" data-i18n="bd_cam">Mở camera</button>
+                  <button type="button" class="bd-b main" id="bdSnap" data-i18n="bd_snap" hidden>Chụp ảnh</button>
+                  <button type="button" class="bd-b" id="bdRetake" data-i18n="bd_retake" hidden>Chụp lại</button>
+                  <button type="button" class="bd-b main" id="bdSave" data-i18n="bd_save" hidden>Lưu huy hiệu</button>
+                  <button type="button" class="bd-b" id="bdUpload" data-i18n="bd_upload">Chọn ảnh</button>
+                  <input type="file" id="bdFile" accept="image/*" hidden>
+                  <button type="button" class="bd-b" id="passReset" data-i18n="d4_r">Chơi lại</button>
+                </div>
+                <p class="bd-priv" data-i18n="bd_priv">Ảnh chỉ xử lý trên trình duyệt của bạn, không được tải lên máy chủ.</p>
+              </div>
+            </div>
       </div>
     </div>
     <div class="f-right"><div class="f-stick">

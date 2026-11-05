@@ -40,24 +40,33 @@ fonts_css = '\n'.join(fonts_css)
 # ---------- images ----------
 A = {}
 for fn in sorted(os.listdir(AS)):
-    if fn.endswith('.webp'):
-        A[fn[:-5]] = 'data:image/webp;base64,' + b64(os.path.join(AS, fn))
+    stem, ext = os.path.splitext(fn)
+    mime = {'.webp': 'image/webp', '.png': 'image/png'}.get(ext.lower())
+    if mime:
+        A[stem] = f'data:{mime};base64,' + b64(os.path.join(AS, fn))
 
 body = open(os.path.join(SRC, 'body.html'), encoding='utf-8').read()
 used = set(re.findall(r'\{\{A:([a-z_0-9]+)\}\}', body))
-missing = [u for u in used if u not in A and u != 'vara_video']
+audio_storytelling = 'data:audio/mpeg;base64,' + b64(os.path.join(AS, 'audio_storytelling.mp3'))
+missing = [u for u in used if u not in A and u not in ('vara_video', 'audio_storytelling')]
 if missing:
     sys.exit('Thiếu ảnh trong thư mục assets: %s' % missing)
 body = body.replace('src="{{A:vara_video}}"', '')
+body = body.replace('src="{{A:audio_storytelling}}"', f'src="{audio_storytelling}"')
 body = body.replace('poster="{{A:vara_poster}}"', 'data-poster="vara_poster"')
 body = re.sub(r'src="\{\{A:([a-z_0-9]+)\}\}"', r'data-a="\1"', body)
-body = body.replace('{{VOICE_SRC}}', '')
+_vp = os.path.join(AS, 'vara_voice.mp3')
+body = body.replace('{{VOICE_SRC}}', (' src="data:audio/mpeg;base64,' + b64(_vp) + '"') if os.path.exists(_vp) else '')
 
 css = open(os.path.join(SRC, 'style.css'), encoding='utf-8').read()
 qr_js_path = os.path.join(os.path.dirname(B), 'js', 'qr-helper.js')
 qr_js = open(qr_js_path, encoding='utf-8').read() if os.path.exists(qr_js_path) else ''
 js = qr_js + '\n' + open(os.path.join(SRC, 'app.js'), encoding='utf-8').read()
 video = b64(os.path.join(AS, 'vara_video.mp4'))
+usp_videos = {
+    fn: 'data:video/mp4;base64,' + b64(os.path.join(AS, fn))
+    for fn in ('AR_anky.mp4', 'AR_endchapter0.mp4')
+}
 
 # Giọng Vara: thả file assets/vara_voice.mp3 (hoặc .m4a/.wav/.aac/.ogg) rồi chạy lại
 voice_js = ''
@@ -85,7 +94,7 @@ html = f'''<!DOCTYPE html>
 </head>
 <body>
 {body}
-<script>window.__A={json.dumps(A)};window.__V="{video}";{voice_js}</script>
+<script>window.__A={json.dumps(A)};window.__V="{video}";window.__VIDEOS={json.dumps(usp_videos)};{voice_js}</script>
 <script>
 {js}
 </script>

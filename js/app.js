@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   var A = window.__A || {};
+  ['stamp_post_office', 'stamp_notre_dame', 'stamp_ben_thanh', 'stamp_independence', 'stamp_opera_house', 'stamp_discovered'].forEach(function (k) { if (!A[k]) A[k] = 'assets/' + k + '.png'; });
   ['app_icon', 'app_map_day', 'app_map_night', 'app_screen_discover', 'app_screen_journal', 'app_screen_passport', 'app_screen_planner', 'app_usp_alley', 'app_usp_ar', 'app_usp_mystery', 'ch0_s01', 'ch0_s02', 'ch0_s03', 'ch0_s04', 'ch0_s05', 'ch0_s06', 'ch0_s07', 'ch0_s08', 'ch0_s09', 'night_frame', 'pb_cover_bd_center', 'pb_cover_hcm_cathedral_night', 'pb_cover_hcm_night', 'pb_cover_hcm_night2', 'pb_cover_hcm_postoffice', 'pb_cover_vt_beach', 'pb_tile_alley', 'pb_tile_benthanh', 'pb_tile_cafe', 'pb_tile_postoffice_inside', 'ph_cover_bd_center', 'ph_cover_bd_night', 'ph_cover_hcm_cathedral_night', 'ph_cover_hcm_night', 'ph_cover_hcm_postoffice', 'ph_cover_hcm_river', 'ph_cover_vt_beach', 'ph_cover_vt_night', 'pt_tile_alley', 'pt_tile_cafe', 'sym_flow', 'sym_gate', 'sym_moon', 'sym_star', 'sym_sun', 'vara_ar', 'vara_card', 'vara_fly', 'vara_hero', 'vara_point', 'vara_poster', 'vara_read', 'vara_search', 'vara_stamp', 'vara_victory', 'vara_wave'].forEach(function (k) { if (!A[k]) A[k] = 'assets/' + k + '.webp'; });
   Array.prototype.forEach.call(document.querySelectorAll('[data-a]'), function (el) { var k = el.getAttribute('data-a'); if (A[k]) el.setAttribute('src', A[k]); });
   Array.prototype.forEach.call(document.querySelectorAll('[data-poster]'), function (el) { var k = el.getAttribute('data-poster'); if (A[k]) el.setAttribute('poster', A[k]); });
@@ -49,7 +50,7 @@
     p5_h: 'Free exploration + Premium experiences',
     p5_t1: '🗺 Free map, itinerary & Vara guidance', p5_t2: '🌙 Premium AR story chapters', p5_t3: '📖 AR Booklet — scannable souvenirs', p5_t4: '🎀 Outfits & accessories for Vara', p5_t5: '🤝 Partnerships with destinations & local businesses',
     p5_bh: 'Expansion roadmap', p5_b1: 'Launching first on Android', p5_b2: 'Cho Lon food route, craft villages, Vung Tau', p5_b3: 'An AR chapter model that scales to many destinations',
-    p6_h: 'The Varabond team', p6_a: 'Team details are being updated.', mem: 'Team member', upd: 'Coming soon',
+    p6_h: 'The Varabond team', p6_a: 'The people behind the Varabond journey.', mem: 'Team member', upd: 'Coming soon',
     dict_t: 'Glossary ·',
     f1_n: 'Feature 01', f1_say: '“Got half a day free? Let me plan a trip that fits your time and your wallet!”', f1_c1: '⏱ By time', f1_c2: '💰 By budget', f1_c3: '❤️ By interest',
     exp: 'Try it', d1_q1: 'How much time do you have?', d1_t1: '2 hours', d1_t2: 'Half a day', d1_t3: 'Evening', d1_q2: 'What do you love?', d1_l1: 'Architecture', d1_l2: 'Cafés & alleys', d1_l3: 'Riverside',
@@ -58,6 +59,7 @@
     ui_time: 'Time', ui_budget: 'Budget', ui_like: 'Interests', ui1_h: 'Your itinerary', ui1_m: '3 stops · on foot', pl_po: 'Saigon Central Post Office', pl_book: 'Nguyen Van Binh Book Street', pl_nd: 'Notre-Dame Cathedral (outside)',
     f1_l1: 'Discovery map', f1_l2: 'Flexible itinerary', f1_l3: 'Budget-aware tips', f1_l4: 'Community-picked places',
     f2_n: 'Feature 02', f2_say: '“I can tell where you are! Come closer and I’ll tell you the story of this place.”', f2_c1: '📡 GPS location', f2_c2: '🏛 History & architecture', f2_c3: '💬 Chat with Vara',
+    f2_voice_eyebrow: 'Voice chat with Vara', f2_voice_title: 'Ask Vara about the city', f2_voice_ready: 'Ready to listen', f2_voice_intro: 'Tap the microphone, ask a short question, then tap again to stop. Vara will reply in text and voice when ready.', f2_voice_start: 'Tap to speak', f2_voice_stop: 'Stop recording', f2_voice_hint: 'The microphone turns on only after you tap the button.', f2_voice_recording: 'Recording… tap again when you are done.', f2_voice_connecting: 'Connecting to Vara…', f2_voice_processing: 'Vara is listening and preparing a reply…', f2_voice_reply: 'Vara replies', f2_voice_audio: 'Or hear Vara introduce the place', f2_voice_error: 'Vara is temporarily unavailable. Please try again shortly.', f2_voice_unsupported: 'This browser does not support voice recording.', f2_voice_permission: 'Please allow microphone access to try voice chat.', f2_voice_text_only: 'Vara has replied in text. Audio is not available for this turn.',
     d2_lab: 'Drag to walk to the Post Office', d2_pop: 'Ding! You’ve reached Saigon Central Post Office. Look up above the main entrance — something there is still keeping time!',
     f2_i: 'When you get close to a supported place, Vara recognises your location via GPS and a geofence (an invisible circle around the spot), then introduces its history, architecture and culture, and suggests things worth trying. It’s the core of the free version.',
     ui2_b: 'Looks like you’re near Saigon Central Post Office. Want to hear its story?', ui2_k: 'You are near', ui2_tags: 'History · Architecture', ui2_btn: 'Listen to Vara',
@@ -72,7 +74,7 @@
     ui3_a: 'Chapter Zero · Day', ui3_ad: '4/4 scenes · Post Office', ui3_b: 'Trace of Time', ui3_bd: 'Evidence · façade', ui3_c: 'Trace of Connection', ui3_cd: 'Evidence · signal', ui3_d: 'Chapter Zero · Night', ui3_dd: 'Waiting for another evening', ui3_e: 'Memory Scene', ui3_ed: '🔒 Locked',
     f3_l1: 'Day & night chapters', f3_l2: 'Evidence & clues', f3_l3: 'Memory Fragments', f3_l4: 'Pause, resume',
     f4_n: 'Feature 04', f4_say: '“Thunk! I stamp a seal everywhere you go. Collect the full set for a Grand Badge!”', f4_c1: '🏅 Landmark Badges', f4_c2: '📸 Your photos & videos', f4_c3: '🏆 Grand Badge',
-    d4_btn: 'Stamp it', d4_note: 'Simulation: in the app, a badge is stamped only when you are actually there.', d4_g: 'Grand Badge!', d4_gp: 'You collected all 5 badges.', d4_r: 'Play again',
+    d4_btn: 'Stamp it', d4_note: 'Simulation: in the app, a badge is stamped only when you are actually there.', d4_g: 'Grand Badge!', d4_gp: 'You collected all 5 badges.', d4_r: 'Play again', bd_sub: 'Take a photo to place into your own personalised badge.', bd_cam: 'Open camera', bd_snap: 'Take photo', bd_retake: 'Retake', bd_save: 'Save badge', bd_upload: 'Choose photo', bd_priv: 'Your photo is processed in your browser only and is never uploaded.', 
     f4_i: 'The Memory Passport keeps your journey: earn Landmark Badges, personalise them with photos or videos, complete collections for a Grand Badge and share memories with friends.',
     ui4_k: 'Memory Passport', ui4_h: 'Your badges', f4_l1: 'Landmark Badges', f4_l2: 'Personal photos & videos', f4_l3: 'Collections', f4_l4: 'Grand Badge',
     s_p: 'Contact our hotline for help', q1: 'When does Varabond launch?', a1: 'Varabond will launch first on Android. Release dates will be posted here.',
@@ -110,6 +112,7 @@
   /* ===================== dynamic strings ===================== */
   var S = {
     vi: {
+      f2_voice_eyebrow: 'Voice chat cùng Vara', f2_voice_title: 'Hỏi Vara về thành phố', f2_voice_ready: 'Sẵn sàng lắng nghe', f2_voice_intro: 'Nhấn micro, nói một câu hỏi ngắn rồi nhấn dừng. Vara sẽ trả lời bằng chữ và giọng nói khi sẵn sàng.', f2_voice_start: 'Nhấn để nói', f2_voice_stop: 'Dừng ghi âm', f2_voice_hint: 'Micro chỉ được bật sau khi bạn nhấn nút.', f2_voice_recording: 'Đang ghi âm… nhấn lại khi bạn nói xong.', f2_voice_connecting: 'Đang kết nối với Vara…', f2_voice_processing: 'Vara đang lắng nghe và chuẩn bị câu trả lời…', f2_voice_reply: 'Vara trả lời', f2_voice_audio: 'Hoặc nghe Vara giới thiệu', f2_voice_error: 'Vara đang tạm thời chưa phản hồi được. Hãy thử lại sau ít phút.', f2_voice_unsupported: 'Trình duyệt này chưa hỗ trợ ghi âm bằng giọng nói.', f2_voice_permission: 'Hãy cho phép dùng micro để thử trò chuyện bằng giọng nói.', f2_voice_text_only: 'Vara đã trả lời bằng văn bản. Lượt này chưa có audio.',
       title: 'Varabond — Cùng AR khám phá thành phố Hồ Chí Minh',
       ar_found: 'AR · Đã tìm thấy mặt phẳng', ar_spawn: 'AR · Vara đã xuất hiện',
       greet: ['Xin chào! Mình là Vara — hướng dẫn viên kiêm bạn đồng hành của bạn ✨', 'Ban ngày, mình cùng bạn chinh phục 5 nhiệm vụ. Đêm xuống, ta giải mã 3 vụ án nhé!', 'Mỗi nơi bạn đặt chân đến sẽ để lại một huy hiệu trong Hộ chiếu đó. Đi thôi nào!'],
@@ -141,7 +144,7 @@
         { k: 'Phần thưởng', h: 'Mảnh Ký Ức: Lời Nhắn', p: 'Một phong thư không có tên người nhận… Phần còn lại sẽ mở ra khi đêm xuống.', s: 'Mới' },
         { k: 'Ban đêm', h: 'Ấn Ký thức tỉnh', p: 'Trở lại vào một buổi tối bất kỳ, ở khu vực công cộng ngoài Nhà thờ Đức Bà.', s: 'Chờ bạn' }
       ],
-      slots: ['Bưu điện', 'Nhà thờ', 'Đường sách', 'Sông SG', 'Phố đi bộ'],
+      slots: [{ n: 'Bưu điện Trung tâm', img: 'stamp_post_office' }, { n: 'Nhà thờ Đức Bà', img: 'stamp_notre_dame' }, { n: 'Chợ Bến Thành', img: 'stamp_ben_thanh' }, { n: 'Dinh Độc Lập', img: 'stamp_independence' }, { n: 'Nhà hát Thành phố', img: 'stamp_opera_house' }],
       pcs: [{ c: 't-day', k: 'Hồi ngày', t: 'Bưu điện Trung tâm', s: '4 cảnh · Mặt trời', img: 'sym_sun', to: 'day' }, { c: 't-gate', k: 'Chapter Zero', t: 'Lá Thư Chưa Từng Đến', s: 'Chương mở đầu · Miễn phí', img: 'sym_gate', to: 'all' }, { c: 't-night', k: 'Hồi đêm', t: 'Nhà thờ Đức Bà', s: '5 cảnh · Mặt trăng', img: 'sym_moon', to: 'night' }],
       sheet: {
         k: 'Chapter Zero', t: 'Lá Thư Chưa Từng Đến', intro: 'Có những lời nhắn không lạc đường. Chúng chỉ đang chờ một người chịu lắng nghe.',
@@ -187,7 +190,7 @@
         { k: 'Reward', h: 'Memory Fragment: The Message', p: 'An envelope with no recipient’s name… The rest opens when night falls.', s: 'New' },
         { k: 'Night', h: 'The Sigil Awakens', p: 'Come back any evening, to the public area outside Notre-Dame Cathedral.', s: 'Waiting' }
       ],
-      slots: ['Post Office', 'Cathedral', 'Book St.', 'Saigon River', 'Walking St.'],
+      slots: [{ n: 'Central Post Office', img: 'stamp_post_office' }, { n: 'Notre-Dame Cathedral', img: 'stamp_notre_dame' }, { n: 'Ben Thanh Market', img: 'stamp_ben_thanh' }, { n: 'Independence Palace', img: 'stamp_independence' }, { n: 'City Opera House', img: 'stamp_opera_house' }],
       pcs: [{ c: 't-day', k: 'Day act', t: 'Central Post Office', s: '4 scenes · The Sun', img: 'sym_sun', to: 'day' }, { c: 't-gate', k: 'Chapter Zero', t: 'The Letter That Never Arrived', s: 'Opening chapter · Free', img: 'sym_gate', to: 'all' }, { c: 't-night', k: 'Night act', t: 'Notre-Dame Cathedral', s: '5 scenes · The Moon', img: 'sym_moon', to: 'night' }],
       sheet: {
         k: 'Chapter Zero', t: 'The Letter That Never Arrived', intro: 'Some messages never lose their way. They are simply waiting for someone willing to listen.',
@@ -289,7 +292,7 @@
   }
   function speak(text) {
     // 1) file ghi âm (nếu có) cho lời chào đầu tiên
-    if (voice && voice.getAttribute('src') && gi === 1) { try { voice.currentTime = 0; var p = voice.play(); if (p && p.catch) p.catch(function () { }); tapBtn.classList.add('playing'); voice.onended = function () { tapBtn.classList.remove('playing') }; return; } catch (e) { } }
+    if (voice && voice.getAttribute('src') && LANG === 'vi') { try { speechSynthesis && speechSynthesis.cancel && speechSynthesis.cancel(); voice.currentTime = 0; var p = voice.play(); if (p && p.catch) p.catch(function () { }); tapBtn.classList.add('playing'); voice.onended = function () { tapBtn.classList.remove('playing') }; return; } catch (e) { } }
     // 2) giọng đọc của trình duyệt (chỉ khi có giọng đúng ngôn ngữ)
     if (!('speechSynthesis' in window)) return;
     try {
@@ -304,7 +307,7 @@
   if ('speechSynthesis' in window) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = function () { } } catch (e) { } }
   function talk() {
     if (arState !== 'spawned') return;
-    var lines = L().greet, text = lines[gi % lines.length]; gi++;
+    var lines = L().greet, useRec = voice && voice.getAttribute('src') && LANG === 'vi', text = useRec ? lines[0] : lines[gi % lines.length]; gi++;
     varaBtn.classList.remove('hop'); void varaBtn.offsetWidth; varaBtn.classList.add('hop');
     var r = ar.getBoundingClientRect(); sparkle(ar, r.width * .55, r.height * .45, 12);
     bubble.classList.add('show'); typeInto(bubbleTxt, text, 26);
@@ -435,13 +438,90 @@
     setTimeout(function () { lastPlan = PLANS[planSel.time][planSel.like]; renderPlan(true); btn.disabled = false; var r = btn.getBoundingClientRect(), pr = $('#demoPlan').getBoundingClientRect(); sparkle($('#demoPlan'), r.left - pr.left + r.width / 2, r.top - pr.top + r.height / 2, 10); }, reduce ? 0 : 700);
   });
 
-  /* ===================== DEMO 2: GEOFENCE ===================== */
-  var gr = $('#geoRange'), me = $('#geoMe'), gm = $('#geoMap'), gd = $('#geoDist'), gp = $('#geoPop'), geoIn = false;
-  function geo() {
-    var v = +gr.value; gr.style.setProperty('--p', v + '%'); me.style.left = (6 + v * 0.72) + '%'; var m = Math.round(450 * (1 - v / 100)); gd.textContent = (m < 15 ? '✓ ' : '') + m + ' m';
-    var inside = v >= 82; if (inside !== geoIn) { geoIn = inside; gm.classList.toggle('inside', inside); gp.classList.toggle('show', inside); if (inside) { var r = gm.getBoundingClientRect(), dr = $('#demoGeo').getBoundingClientRect(); sparkle($('#demoGeo'), r.right - dr.left - 60, r.top - dr.top + r.height / 2, 14); } }
-  }
-  gr.addEventListener('input', geo); geo();
+  /* ===================== DEMO 2: VOICE CHAT ===================== */
+  (function () {
+    var root = $('#demoVoice'), mic = $('#voiceMic');
+    if (!root || !mic) return;
+    var API = 'https://saigon-veilwake-ai-assistant.onrender.com', sessionId = null, recorder = null, stream = null, chunks = [], busy = false, timer = null, stopTimer = null, audioUrl = null;
+    var status = $('#voiceStatus'), label = $('#voiceMicLabel'), hint = $('#voiceHint'), timerEl = $('#voiceTimer'), response = $('#voiceResponse'), reply = $('#voiceReply'), replyAudio = $('#voiceReplyAudio');
+    function text(key) { return L()[key] || ''; }
+    function apiUrl(path) { return /^https?:\/\//.test(path) ? path : API + path; }
+    function wait(ms) { return new Promise(function (resolve) { setTimeout(resolve, ms); }); }
+    function clock(seconds) { return '00:' + String(Math.min(30, seconds)).padStart(2, '0'); }
+    function stopClock() { clearInterval(timer); clearTimeout(stopTimer); timer = null; stopTimer = null; timerEl.textContent = '00:00'; }
+    function view(mode, statusKey, hintKey) {
+      root.classList.toggle('recording', mode === 'recording'); root.classList.toggle('busy', mode === 'busy');
+      mic.disabled = mode === 'busy'; mic.setAttribute('aria-pressed', mode === 'recording' ? 'true' : 'false');
+      label.textContent = mode === 'recording' ? text('f2_voice_stop') : text('f2_voice_start');
+      status.textContent = text(statusKey); hint.textContent = text(hintKey || statusKey);
+    }
+    async function request(path, options) {
+      var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 70000);
+      try {
+        var res = await fetch(apiUrl(path), Object.assign({ cache: 'no-store', signal: controller.signal }, options || {}));
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res;
+      } finally { clearTimeout(timeout); }
+    }
+    function releaseStream() { if (stream) stream.getTracks().forEach(function (track) { track.stop(); }); stream = null; }
+    function resetReplyAudio() { replyAudio.pause(); replyAudio.removeAttribute('src'); replyAudio.hidden = true; if (audioUrl) URL.revokeObjectURL(audioUrl); audioUrl = null; }
+    async function connect() {
+      if (sessionId) return;
+      var session = await (await request('/v1/conversations', { method: 'POST' })).json();
+      if (!session.conversation_id) throw new Error('Missing conversation ID');
+      sessionId = session.conversation_id;
+    }
+    async function poll(turnId) {
+      for (var i = 0; i < 75; i++) {
+        if (i) await wait(1200);
+        var turn = await (await request('/v1/turns/' + encodeURIComponent(turnId))).json();
+        if (turn.status === 'FAILED') throw new Error('Turn failed');
+        if (turn.status === 'COMPLETED' || turn.status === 'COMPLETED_TEXT_ONLY') return turn;
+      }
+      throw new Error('Turn timed out');
+    }
+    async function playReply(turn) {
+      if (!turn.audio || turn.audio.status !== 'READY' || !turn.audio.endpoint) return false;
+      var blob = await (await request(turn.audio.endpoint)).blob();
+      audioUrl = URL.createObjectURL(blob); replyAudio.src = audioUrl; replyAudio.hidden = false;
+      replyAudio.play().catch(function () { });
+      return true;
+    }
+    async function sendRecording(blob) {
+      try {
+        var data = new FormData();
+        data.append('audio', blob, 'vara-question.webm'); data.append('response_mode', 'text_and_voice'); data.append('locale', 'vi-VN');
+        var accepted = await (await request('/v1/conversations/' + encodeURIComponent(sessionId) + '/voice-turns', { method: 'POST', body: data })).json();
+        var turn = await poll(accepted.turn_id);
+        response.hidden = false; reply.textContent = turn.answer && turn.answer.text ? turn.answer.text : text('f2_voice_error');
+        var hasAudio = await playReply(turn); view('ready', 'f2_voice_ready', hasAudio ? 'f2_voice_hint' : 'f2_voice_text_only');
+      } catch (error) {
+        console.warn('Voice chat request failed.', error); view('ready', 'f2_voice_error', 'f2_voice_error');
+      } finally { busy = false; }
+    }
+    function stopRecording() {
+      if (!recorder || recorder.state === 'inactive') return;
+      busy = true; stopClock(); view('busy', 'f2_voice_processing', 'f2_voice_processing'); recorder.stop();
+    }
+    async function startRecording() {
+      if (busy || recorder) return;
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { view('ready', 'f2_voice_unsupported', 'f2_voice_unsupported'); return; }
+      busy = true; resetReplyAudio(); response.hidden = true; view('busy', 'f2_voice_connecting', 'f2_voice_connecting');
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true }); await connect();
+        var type = MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : '';
+        recorder = type ? new MediaRecorder(stream, { mimeType: type }) : new MediaRecorder(stream); chunks = [];
+        recorder.addEventListener('dataavailable', function (event) { if (event.data && event.data.size) chunks.push(event.data); });
+        recorder.addEventListener('stop', function () { var finished = recorder; recorder = null; releaseStream(); var blob = new Blob(chunks, { type: finished.mimeType || 'audio/webm' }); if (!blob.size) { busy = false; view('ready', 'f2_voice_error', 'f2_voice_error'); return; } sendRecording(blob); });
+        recorder.start(); busy = false; view('recording', 'f2_voice_recording', 'f2_voice_recording');
+        var started = Date.now(); timer = setInterval(function () { timerEl.textContent = clock(Math.floor((Date.now() - started) / 1000)); }, 200); stopTimer = setTimeout(stopRecording, 30000);
+      } catch (error) {
+        console.warn('Voice recording could not start.', error); releaseStream(); busy = false; view('ready', 'f2_voice_permission', 'f2_voice_permission');
+      }
+    }
+    mic.addEventListener('click', function () { if (recorder) stopRecording(); else startRecording(); });
+    window.addEventListener('pagehide', function () { stopClock(); if (recorder && recorder.state !== 'inactive') recorder.stop(); releaseStream(); if (audioUrl) URL.revokeObjectURL(audioUrl); });
+  })();
 
   /* ===================== DEMO 3: JOURNAL ===================== */
   var jp = 0;
@@ -461,16 +541,71 @@
   /* ===================== DEMO 4: PASSPORT ===================== */
   var got = 0;
   function renderSlots() {
-    var sl = L().slots, now = new Date(), dd = ('0' + now.getDate()).slice(-2) + '.' + ('0' + (now.getMonth() + 1)).slice(-2);
-    $('#passSlots').innerHTML = sl.map(function (n, i) { return '<span class="slot' + (i < got ? ' got' : '') + '"><span class="nm">' + n + '</span><span class="stp">' + n + '<br>No.0' + (i + 1) + '<br>' + dd + '</span></span>' }).join('');
+    var sl = L().slots;
+    $('#passSlots').innerHTML = sl.map(function (slot, i) { return '<span class="slot' + (i < got ? ' got' : '') + '"><span class="nm">' + slot.n + '</span><img class="stamp-art" src="' + A[slot.img] + '" alt=""><img class="stamp-mark" src="' + A.stamp_discovered + '" alt=""></span>' }).join('');
   }
   function passUI() { $('#passBar').style.width = (got / 5 * 100) + '%'; $('#passCount').textContent = got + '/5'; }
   $('#stampBtn').addEventListener('click', function () {
     if (got >= 5) return; var s = $$('#passSlots .slot')[got]; s.classList.add('got'); got++; passUI();
     var demo = $('#demoPass'); setTimeout(function () { demo.classList.remove('shake'); void demo.offsetWidth; demo.classList.add('shake'); var r = s.getBoundingClientRect(), dr = demo.getBoundingClientRect(); sparkle(demo, r.left - dr.left + r.width / 2, r.top - dr.top + r.height / 2, 10); }, 300);
-    if (got === 5) setTimeout(function () { $('#grand').classList.add('show') }, 800);
+    if (got === 5) setTimeout(openGrand, 800);
   });
-  $('#passReset').addEventListener('click', function () { got = 0; renderSlots(); passUI(); $('#grand').classList.remove('show') });
+  var bdStream = null, bdCanvas = null;
+  $('#bdFrame').src = A.badge_frame || 'assets/badge_frame.png';
+  var BDT = {
+    vi: { ask: 'Hãy cho phép dùng camera để chụp ảnh.', live: 'Căn mặt vào khung rồi bấm “Chụp ảnh”.', done: 'Huy hiệu của bạn đã sẵn sàng!', deny: 'Không mở được camera. Bạn có thể chọn ảnh từ máy.', nosup: 'Trình duyệt không hỗ trợ camera. Hãy chọn ảnh từ máy.' },
+    en: { ask: 'Please allow camera access to take a photo.', live: 'Fit your face in the frame, then tap “Take photo”.', done: 'Your personalised badge is ready!', deny: 'Could not open the camera. You can pick a photo instead.', nosup: 'This browser has no camera support. Please pick a photo.' }
+  };
+  function bdMsg(k) { $('#bdMsg').textContent = k ? BDT[LANG][k] : ''; }
+  function bdShow(state) {
+    var st = $('#bdStage'); st.classList.toggle('live', state === 'live'); st.classList.toggle('shot', state === 'shot');
+    $('#bdCam').hidden = state === 'live'; $('#bdSnap').hidden = state !== 'live';
+    $('#bdRetake').hidden = state !== 'shot'; $('#bdSave').hidden = state !== 'shot';
+    $('#bdCam').hidden = state !== 'idle'; $('#bdUpload').hidden = state === 'live' || state === 'shot';
+  }
+  function bdStop() { if (bdStream) { bdStream.getTracks().forEach(function (t) { t.stop() }); bdStream = null; } var v = $('#bdVideo'); v.pause(); v.srcObject = null; }
+  function bdStart() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { bdMsg('nosup'); return; }
+    bdMsg('ask');
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 960 }, height: { ideal: 960 } }, audio: false }).then(function (s) {
+      bdStream = s; var v = $('#bdVideo'); v.srcObject = s; v.play().catch(function () { }); bdShow('live'); bdMsg('live');
+    }).catch(function () { bdShow('idle'); bdMsg('deny'); });
+  }
+  function bdCompose(src, mirror, sw, sh, frame) {
+    var S = 1024, c = document.createElement('canvas'); c.width = S; c.height = S; var x = c.getContext('2d');
+    var cx = 510, cy = 472, R = 318;
+    x.save(); x.beginPath(); x.arc(cx, cy, R, 0, Math.PI * 2); x.clip(); x.fillStyle = '#163b65'; x.fillRect(0, 0, S, S);
+    var d = R * 2, r = Math.max(d / sw, d / sh), dw = sw * r, dh = sh * r;
+    if (mirror) { x.translate(cx * 2, 0); x.scale(-1, 1); }
+    x.drawImage(src, cx - dw / 2, cy - dh / 2, dw, dh); x.restore();
+    x.drawImage(frame, 0, 0, S, S);
+    return c;
+  }
+  function bdFinish(c) { bdCanvas = c; $('#bdShot').src = c.toDataURL('image/png'); bdStop(); bdShow('shot'); bdMsg('done'); }
+  function bdSnap() {
+    var v = $('#bdVideo'); if (!v.videoWidth) return;
+    bdFinish(bdCompose(v, true, v.videoWidth, v.videoHeight, $('#bdFrame')));
+  }
+  function bdFromFile(file) {
+    if (!file) return; var img = new Image(), url = URL.createObjectURL(file);
+    img.onload = function () { bdFinish(bdCompose(img, false, img.naturalWidth, img.naturalHeight, $('#bdFrame'))); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+  function bdSave() {
+    if (!bdCanvas) return; var a = document.createElement('a'); a.download = 'varabond-huy-hieu.png'; a.href = bdCanvas.toDataURL('image/png');
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function bdReset() { bdStop(); bdCanvas = null; $('#bdShot').removeAttribute('src'); bdShow('idle'); bdMsg(''); }
+  function openGrand() { var d = $('#demoPass'); d.classList.add('won'); bdReset(); var g = $('#grand'); if (g.scrollIntoView) g.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); }
+  function resetPass() { bdReset(); got = 0; renderSlots(); passUI(); $('#demoPass').classList.remove('won'); }
+  $('#bdCam').addEventListener('click', bdStart);
+  $('#bdSnap').addEventListener('click', bdSnap);
+  $('#bdRetake').addEventListener('click', function () { bdReset(); bdStart(); });
+  $('#bdSave').addEventListener('click', bdSave);
+  $('#bdUpload').addEventListener('click', function () { $('#bdFile').click() });
+  $('#bdFile').addEventListener('change', function () { bdFromFile(this.files[0]); this.value = ''; });
+  $('#passReset').addEventListener('click', resetPass);
+  window.addEventListener('pagehide', bdStop);
 
   /* ===================== THEME (ngày / đêm) ===================== */
   var NIGHT = false;
@@ -537,6 +672,41 @@
   /* ===================== USP: danh sách sáng lần lượt ===================== */
   setInterval(function () { $$('.usp-row.in').forEach(function (row) { var lis = $$('.usp-r li', row); var i = (+row.dataset.hi || 0) % lis.length; lis.forEach(function (l, j) { l.classList.toggle('on', j === i) }); row.dataset.hi = i + 1; }); }, 1700);
 
+  /* ===================== USP: video AR luân phiên ===================== */
+  var uspArVideo = $('#uspArVideo');
+  if (uspArVideo) {
+    var uspArSources = (uspArVideo.dataset.videoSources || '').split(',').filter(Boolean).map(function (name) { return (window.__VIDEOS && window.__VIDEOS[name]) || ('assets/' + name); });
+    var uspArIndex = 0, uspArVisible = false;
+    function loadUspArVideo() {
+      if (!uspArSources.length || uspArVideo.getAttribute('src')) return;
+      uspArVideo.src = uspArSources[uspArIndex];
+      uspArVideo.load();
+    }
+    function playUspArVideo() {
+      if (!uspArVisible || reduce) return;
+      var p = uspArVideo.play();
+      if (p && p.catch) p.catch(function () { });
+    }
+    uspArVideo.addEventListener('canplay', playUspArVideo);
+    uspArVideo.addEventListener('ended', function () {
+      uspArIndex = (uspArIndex + 1) % uspArSources.length;
+      uspArVideo.removeAttribute('src');
+      loadUspArVideo();
+      playUspArVideo();
+    });
+    if (io) {
+      new IntersectionObserver(function (es) {
+        uspArVisible = es[0].isIntersecting;
+        loadUspArVideo();
+        if (uspArVisible) playUspArVideo(); else uspArVideo.pause();
+      }, { threshold: .35 }).observe(uspArVideo);
+    } else {
+      uspArVisible = true;
+      loadUspArVideo();
+      playUspArVideo();
+    }
+  }
+
   /* ===================== CUỐN SÁCH KÝ ỨC (lật trang thật) ===================== */
   var bk = $('#bk'), bkStage = $('#bkStage'), BK = { sheets: [], cur: 0, mode: '' };
   function bkModeNow() { return innerWidth <= 640 ? 'single' : 'spread' }
@@ -578,7 +748,7 @@
   function birdsCheck() {
     var vis = BK.mode === 'spread' ? [2 * BK.cur - 1, 2 * BK.cur] : [BK.cur];
     vis.forEach(function (p) { var pg = $('.pg[data-p="' + p + '"]', bk); if (pg && pg.querySelector('.birds') && !pg.classList.contains('show-birds')) { pg.classList.add('show-birds'); } });
-    $$('.pg.show-birds', bk).forEach(function (pg) { if (vis.indexOf(+pg.dataset.p) < 0) pg.classList.remove('show-birds'); });
+    $$('.pg.show-birds', bk).forEach(function (pg) { if (vis.indexOf(+pg.dataset.p) < 0) pg.classList.remove('show-birds', 'send-birds'); });
   }
   var actx = null;
   function paperSound() { if (reduce) return; try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); var d = .32, sr = actx.sampleRate, b = actx.createBuffer(1, Math.floor(sr * d), sr), ch = b.getChannelData(0); for (var i = 0; i < ch.length; i++) { var t = i / ch.length; ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - t, 2.2) * (t < .1 ? t / .1 : 1) * (.7 + .3 * Math.sin(t * 40)); } var src = actx.createBufferSource(); src.buffer = b; var f = actx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2200; f.Q.value = .7; var g = actx.createGain(); g.gain.value = .1; src.connect(f); f.connect(g); g.connect(actx.destination); src.start(); } catch (e) { } }
@@ -626,7 +796,7 @@
   function bindBookUI() {
     $$('.gap', bk).forEach(function (g) { g.addEventListener('click', function () { if (g.classList.contains('ok')) return; g.classList.add('ok'); g.textContent = g.dataset.l; var r = g.getBoundingClientRect(), br = bkStage.getBoundingClientRect(); sparkle(bkStage, r.left - br.left + r.width / 2, r.top - br.top + r.height / 2, 10); }); });
     var ta = $('#bkNote'); if (ta) { try { ta.value = localStorage.getItem('vb_note') || '' } catch (e) { } ta.addEventListener('input', function () { try { localStorage.setItem('vb_note', ta.value) } catch (e) { } }); }
-    var sd = $('#bkSend'); if (sd) sd.addEventListener('click', function () { var pg = sd.closest('.pg'); pg.classList.remove('show-birds'); void pg.offsetWidth; pg.classList.add('show-birds'); sd.textContent = L().bk_sent; });
+    var sd = $('#bkSend'); if (sd) sd.addEventListener('click', function () { var pg = sd.closest('.pg'); pg.classList.remove('show-birds', 'send-birds'); void pg.offsetWidth; pg.classList.add('show-birds', 'send-birds'); sd.textContent = L().bk_sent; });
   }
   var bkResizeT = null; window.addEventListener('resize', function () { clearTimeout(bkResizeT); bkResizeT = setTimeout(function () { if (bkModeNow() !== BK.mode) renderBook(); }, 220) });
   $('#openScenes').addEventListener('click', function () { openSheet('all') });
