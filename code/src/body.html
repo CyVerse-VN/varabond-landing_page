@@ -12,6 +12,7 @@
         <div class="dd"><div class="dd-in">
           <a href="#vara"><img src="{{A:vara_wave}}" alt=""><span><span data-i18n="nav_meet">Gặp Vara</span><small data-i18n="nav_meet_s">Người bạn đồng hành AR</small></span></a>
           <a href="/ar-demo/vara"><img src="{{A:vara_hero}}" alt=""><span><span data-i18n="nav_ar_dd">Trạm thử nghiệm AR 3D</span><small data-i18n="nav_ar_dd_s">Đặt Vara lên mặt bàn & thử 6 cử chỉ</small></span></a>
+          <a href="#video-gioi-thieu"><img src="{{A:vara_poster}}" alt=""><span><span data-i18n="nav_ov">Video giới thiệu</span><small data-i18n="nav_ov_s">Toàn cảnh ứng dụng trong 90 giây</small></span></a>
           <a href="#usp"><img src="{{A:sym_star}}" alt=""><span><span data-i18n="nav_usp">Điểm khác biệt</span><small data-i18n="nav_usp_s">AR · Hẻm nhỏ · Phá án đêm</small></span></a>
           <a href="#ho-so"><img src="{{A:vara_point}}" alt=""><span><span data-i18n="nav_profile">Hồ sơ dự án</span><small data-i18n="nav_profile_s">Ý tưởng, MVP, định hướng</small></span></a>
           <a href="#tu-dien"><img src="{{A:sym_gate}}" alt=""><span><span data-i18n="nav_dict">Từ điển Varabond</span><small data-i18n="nav_dict_s">Ký giới, Ấn ký, biểu tượng</small></span></a>
@@ -84,7 +85,7 @@
       <p class="meet-p rv" style="--d:.1s" data-i18n="meet_p">Chú chim nhỏ trắng và xanh ngọc, vừa là hướng dẫn viên vừa là người bạn đồng hành. Vara xuất hiện ngay trên cảnh thật qua camera, kể chuyện từng góc phố và dẫn bạn đi qua những chương truyện ngày và đêm.</p>
       <div class="cta-row rv" style="--d:.2s">
         <button class="tap" id="tapBtn"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></span><span data-i18n="tap">Chạm để Vara chào bạn</span></button>
-        <a class="btn ghost2" href="#ho-tro"><span data-i18n="meet_video">Xem Vara trong video</span> <span class="arr">→</span></a>
+        <a class="btn ghost2" href="#video-gioi-thieu"><span data-i18n="meet_video">Xem Vara trong video</span> <span class="arr">→</span></a>
       </div>
 
       <!-- Trạm Thử Nghiệm Linh Vật 3D & AR -->
@@ -119,6 +120,64 @@
     </div>
   </div>
 </section>
+
+    <!-- ================= OVERVIEW VIDEO (90s) ================= -->
+    <section class="overview-sec" id="video-gioi-thieu">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="eyebrow" data-i18n="ov_eye">Video giới thiệu · 90 giây</span>
+          <h2 class="display" data-i18n="ov_h">Toàn cảnh <span class="hl">Varabond</span> trong một thước phim</h2>
+          <p class="ov-lead" data-i18n="ov_p">Khám phá trọn vẹn hành trình trên ứng dụng: từ lập lịch trình thông minh, trò chuyện giọng nói cùng Vara, tương tác AR ngoài đời thực cho đến giải mã Ký Giới về đêm và lưu giữ Hộ chiếu Ký Ức.</p>
+        </div>
+
+        <div class="ov-stage rv" style="--d:.1s" id="ovStage">
+          <div class="ov-frame">
+            <video id="overviewVideo" src="assets/Varabond-Startup-v2-90s.mp4" poster="{{A:vara_poster}}" playsinline preload="metadata" controls></video>
+            <button type="button" class="ov-cover" id="ovPlayOverlay" aria-label="Phát video giới thiệu Varabond">
+              <span class="ov-badge"><i class="ar-live-dot" aria-hidden="true"></i><span data-i18n="ov_badge">TRAILER CHÍNH THỨC · 01:30</span></span>
+              <span class="ov-play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="ov-cover-txt">
+                <b data-i18n="ov_cta">Xem giới thiệu tổng thể ứng dụng</b>
+                <small data-i18n="ov_cta_sub">Bấm để phát video có âm thanh</small>
+              </span>
+            </button>
+          </div>
+
+          <div class="ov-pillars">
+            <a class="ov-pillar" href="#du-ngoan">
+              <span class="ov-p-num">01</span>
+              <div>
+                <b data-i18n="ov_c1_t">Du ngoạn & Lịch trình</b>
+                <small data-i18n="ov_c1_d">Gợi ý lộ trình theo thời gian & ngân sách</small>
+              </div>
+            </a>
+            <a class="ov-pillar" href="#kham-pha">
+              <span class="ov-p-num">02</span>
+              <div>
+                <b data-i18n="ov_c2_t">Khám phá & Voice AI</b>
+                <small data-i18n="ov_c2_d">Định vị GPS, nghe kể chuyện & hỏi đáp giọng nói</small>
+              </div>
+            </a>
+            <a class="ov-pillar" href="#chuong-truyen">
+              <span class="ov-p-num">03</span>
+              <div>
+                <b data-i18n="ov_c3_t">Tương tác AR & Ký Giới</b>
+                <small data-i18n="ov_c3_d">Mở Ống kính AR, tìm manh mối & phá án đêm</small>
+              </div>
+            </a>
+            <a class="ov-pillar" href="#ho-chieu">
+              <span class="ov-p-num">04</span>
+              <div>
+                <b data-i18n="ov_c4_t">Hộ chiếu & Đại Huy Hiệu</b>
+                <small data-i18n="ov_c4_d">Đóng dấu địa danh & ghép ảnh vào khung huy hiệu</small>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
 <!-- ================= USP ================= -->
 <section class="usp" id="usp">

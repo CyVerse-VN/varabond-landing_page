@@ -14,7 +14,7 @@
 
   /* ===================== EN dictionary for static text ===================== */
   var EN = {
-    nav_vb: 'Varabond', nav_profile: 'Project profile', nav_profile_s: 'Idea, MVP, roadmap', nav_dict: 'Varabond glossary', nav_dict_s: 'Ky Gioi, sigils, symbols',
+    nav_vb: 'Varabond', nav_ov: 'Overview video', nav_ov_s: 'Full app tour in 90 seconds', ov_eye: 'App Overview · 90 seconds', ov_h: 'The whole <span class="hl">Varabond</span> journey in one film', ov_p: 'Discover every part of the app: smart itinerary planning, live voice chat with Vara, real-world AR interaction, night-time Ky Gioi mysteries and your personal Memory Passport.', ov_badge: 'OFFICIAL TRAILER · 01:30', ov_cta: 'Watch the full app overview', ov_cta_sub: 'Tap to play with sound', ov_c1_t: 'Wander & Itinerary', ov_c1_d: 'Routes tailored to your time & budget', ov_c2_t: 'Discover & Voice AI', ov_c2_d: 'GPS stories & live voice Q&A with Vara', ov_c3_t: 'AR & Night Mysteries', ov_c3_d: 'Open the AR lens, find clues & solve cases', ov_c4_t: 'Passport & Grand Badge', ov_c4_d: 'Collect stamps & frame your own photo badge', nav_profile: 'Project profile', nav_profile_s: 'Idea, MVP, roadmap', nav_dict: 'Varabond glossary', nav_dict_s: 'Ky Gioi, sigils, symbols',
     nav_tools: 'Features', f1_t: 'Wander', nav_f1_s: 'Map & itinerary', f2_t: 'Discover', nav_f2_s: 'Vara guides you by location', f4_t: 'Passport', nav_f4_s: 'Badges & memories', f3_t: 'Journal', nav_f3_s: 'Chapters & clues', nav_help: 'Support', soon_short: 'Coming soon',
     hero_lead: 'Explore, with AR, a<br><strong>Ho Chi Minh City</strong> you have never seen.',
     hero_desc: 'Travel Ho Chi Minh City with AR and your companion, Vara the bird. You won’t just visit new places — you’ll discover Saigon’s culture through missions and story chapters that unfold by day and by night.',
@@ -1226,6 +1226,30 @@
       });
     }
   }
+
+
+  /* ===================== OVERVIEW VIDEO (90s) ===================== */
+  (function () {
+    var stage = $('#ovStage'), video = $('#overviewVideo'), overlay = $('#ovPlayOverlay');
+    if (!stage || !video || !overlay) return;
+    function syncState() {
+      stage.classList.toggle('playing', !video.paused && !video.ended);
+    }
+    overlay.addEventListener('click', function () {
+      video.muted = false;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { video.muted = true; video.play().catch(function () { }); });
+      syncState();
+    });
+    video.addEventListener('play', syncState);
+    video.addEventListener('pause', syncState);
+    video.addEventListener('ended', function () { stage.classList.remove('playing'); });
+    if (io) {
+      new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting && !video.paused) video.pause();
+      }, { threshold: 0.15 }).observe(video);
+    }
+  })();
 
   /* ===================== init ===================== */
   applyLang(); onScroll(); setTab(0); passUI();
